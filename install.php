@@ -7,7 +7,7 @@ Firstname VARCHAR(30) NOT NULL,
 Lastname VARCHAR(30) NOT NULL,
 Username VARCHAR(40) NOT NULL,
 Password VARCHAR(20) NOT NULL,
-Authority TINYINT(1))");
+Role TINYINT(1))");
 $stmt->execute();
 $stmt->closeCursor();
 ?>
