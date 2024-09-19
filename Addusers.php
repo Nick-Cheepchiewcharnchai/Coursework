@@ -19,7 +19,7 @@ switch($_POST["role"]){
 		break;
 }
 
-$stmt = $conn->prepare("INSERT INTO TblUser (UserID,Firstname,Lastname,Username,Password,Role)VALUES (null,:firstname,:lastname,:username,:password,:role)");
+$stmt = $conn->prepare("INSERT INTO tblusers (UserID,Firstname,Lastname,Username,Password,Role)VALUES (null,:firstname,:lastname,:username,:password,:role)");
 
 $stmt->bindParam(':firstname', $_POST[“firstname”]);
 $stmt->bindParam(':lastname', $_POST[“lastname”]);
