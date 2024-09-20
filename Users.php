@@ -9,13 +9,13 @@
 <body>
 
 <form action="addusers.php" method = "post">
-  First name:<input type="text" name="firstname"><br>
-  Last name:<input type="text" name="lastname"><br>
+  Firstname:<input type="text" name="firstname"><br>
+  Lastname:<input type="text" name="lastname"><br>
   Username:<input type="text" name="username"><br>
   Password:<input type="password" name="passwd"><br>
   <br>
-  <input type="radio" name="role" value= "User" checked> User <br>
-  <input type="radio" name="role" value="Admin"> Admin <br>
+  <input type="radio" name="Authority" value= "User" checked> User <br>
+  <input type="radio" name="authority" value="Admin"> Admin <br>
   <input type="submit" value="Add User">
 </form>
 
