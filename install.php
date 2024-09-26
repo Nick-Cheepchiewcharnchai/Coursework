@@ -14,7 +14,7 @@ $stmt->execute();
 $stmt->closeCursor();
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS TblItems;
-CREATE TABLE TblUsers 
+CREATE TABLE Tblitems 
 (ItemID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Itemname VARCHAR(30) NOT NULL,
 Itemdescription VARCHAR(500),
