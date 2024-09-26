@@ -12,12 +12,11 @@
   Itemname:<input type="text" name="itemname"><br>
   Itemdescription:<input type="text" name="itemdescription"><br>
   Itemtype:<select name="itemtype">
-    <option value="T">Male</option>
-    <option value="B">Female</option>
-    <option value="A">Male</option>
-    <option value="O">Female</option>
-  </select>
-  <br>
+    <option value="T">Tops</option>
+    <option value="B">Bottoms</option>
+    <option value="A">Accessories</option>
+    <option value="O">Others</option>
+  </select><br>
   Itemcost:<input type="text" name="itemcost"><br>
                     <!--PICTURESSSS-->
 </form>
