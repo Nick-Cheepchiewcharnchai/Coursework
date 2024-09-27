@@ -8,7 +8,7 @@
 
 <body>
 
-    <form action="addusers.php" method = "post">
+    <form action="tryaddusers.php" method = "post">
         Firstname:<input type="text" name="firstname"><br>
         Lastname:<input type="text" name="lastname"><br>
         Username:<input type="text" name="username"><br>
