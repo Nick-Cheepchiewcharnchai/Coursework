@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 try{
 
 	include_once("connection.php")
-	array_map("htmlspecialchars", $_POST);
 
 	switch($_POST["authority"]){
 		case "User":
