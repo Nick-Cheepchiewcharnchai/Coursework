@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <title>Crosby Merch</title>
+  <title>Users</title>
 </head>
 
 <body>
