@@ -14,7 +14,7 @@
   Username:<input type="text" name="username"><br>
   Password:<input type="password" name="passwd"><br>
   <br>
-  <input type="radio" name="Authority" value= "User" checked> User <br>
+  <input type="radio" name="authority" value= "User" checked> User <br>
   <input type="radio" name="authority" value="Admin"> Admin <br>
   <input type="submit" value="Add User">
 </form>
