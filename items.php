@@ -18,7 +18,7 @@
     <option value="O">Others</option>
   </select><br>
   Item cost:<input type="text" name="itemcost"><br>
-  <input type="submit" value="Add User">
+  <input type="submit" value="Add Item">
                     <!--PICTURESSSS-->
 </form>
 
