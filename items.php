@@ -18,6 +18,7 @@
     <option value="O">Others</option>
   </select><br>
   Itemcost:<input type="text" name="itemcost"><br>
+  <input type="submit" value="Add User">
                     <!--PICTURESSSS-->
 </form>
 
