@@ -21,6 +21,18 @@
                     <!--PICTURESSSS-->
 </form>
 
+<?php
+  include_once('connection.php');
+
+  $stmt = $conn->prepare("SELECT * FROM tblitems");
+  $stmt->execute();
+
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    {
+      echo($row["Itemname"].' '.$row["Itemcost"]."<br>");
+    }
+?>
+
 </body>
 </html>
 
