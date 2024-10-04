@@ -19,7 +19,7 @@ CREATE TABLE Tblitems
 Itemname VARCHAR(30) NOT NULL,
 Itemdescription VARCHAR(500),
 Itemtype VARCHAR(1) NOT NULL,
-Itemcost FLOAT(3,2) NOT NULL,");
+Itemcost FLOAT(5,2) NOT NULL,");
 $stmt->execute();
 $stmt->closeCursor();
 
