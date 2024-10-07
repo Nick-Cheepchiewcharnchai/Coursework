@@ -7,6 +7,7 @@ array_map("htmlspecialchars", $_POST);
 $stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username =:username;");
 
 $stmt->bindParam(':username', $_POST["username"]);
+$stmt->bindParam(':password', $_POST["passwd"]);
 
 $stmt->execute();
 
