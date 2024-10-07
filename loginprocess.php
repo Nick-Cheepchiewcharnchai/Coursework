@@ -14,9 +14,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 { 
     if($row['Password']== $_POST['passwd']){
         header('Location: homepage.php');
+        echo "Yes";
     }else{
-
         header('Location: login.php');
+        echo "No";
     }
 }
 
