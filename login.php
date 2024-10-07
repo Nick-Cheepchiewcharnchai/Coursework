@@ -8,7 +8,7 @@
 <body>
 
 <form action="loginprocess.php" method= "POST">
-    Username:<input type="text" name="Username"><br>
+    Username:<input type="text" name="username"><br>
     Password:<input type="password" name="passwd"><br>
     <input type="submit" value="Login">
 </form>
