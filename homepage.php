@@ -11,8 +11,8 @@
         .custom-navbar {
             background-color: #980930; /* Hex color as per request */
             color: white;
-            border-top: 2px solid black; /* Black line on top */
-            border-bottom: 2px solid black; /* Black line on bottom */
+            border-top: 10px solid black; /* Black line on top */
+            border-bottom: 10px solid black; /* Black line on bottom */
         }
 
         .custom-navbar .navbar-brand,
