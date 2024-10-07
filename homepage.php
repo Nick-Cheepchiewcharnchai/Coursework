@@ -85,6 +85,7 @@
             </div>
             <div class="col-md-3">
                 <select class="form-select" id="categoryFilter">
+                    <option value="">All</option>
                     <option value="">Shirts</option>
                     <option value="">Trousers</option>
                     <option value="">Accesories</option>
