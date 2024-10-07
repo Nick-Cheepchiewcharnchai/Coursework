@@ -16,12 +16,11 @@
         }
 
         .custom-navbar .navbar-brand {
-            font-color
             font-weight: bold;
-            font-size: 24px;
-        }
-        .custom-navbar .nav-link {
-            color: white !important;
+            font-size: 28px;
+            color: white;
+            display: flex;
+            align-items: center;
         }
 
         .custom-navbar .navbar-brand img {
