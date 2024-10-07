@@ -91,8 +91,10 @@
             </div>
             <div class="col-md-3">
                 <select class="form-select" id="sortBy">
-                    <option value="price">Sort by Price</option>
-                    <option value="name">Sort by Name</option>
+                    <option value="price">Newest</option>
+                    <option value="price">Oldest</option>
+                    <option value="price">Cost (high to low)</option>
+                    <option value="price">Cost (low to high)</option>
                 </select>
             </div>
         </div>
