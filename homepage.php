@@ -16,6 +16,7 @@
         }
 
         .custom-navbar .navbar-brand {
+            font-color
             font-weight: bold;
             font-size: 24px;
         }
@@ -53,7 +54,7 @@
         <div class="container-fluid">
             <!-- Circular image before "Crosby Merch" -->
             <a class="navbar-brand" href="#">
-                <img src="path-to-your-logo.jpg" alt="Logo"> <strong>Crosby Merch</strong>
+                <img src="path-to-your-logo.jpg" alt="Logo"> Crosby Merch
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
