@@ -30,6 +30,10 @@
             margin-right: 10px;
         }
 
+        .custom-navbar .navbar-link {
+            color: white;
+        }
+
         /* Hover effect for the links */
         .custom-navbar .nav-link:hover {
             text-decoration: underline;
