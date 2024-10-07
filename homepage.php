@@ -30,7 +30,7 @@
             margin-right: 10px;
         }
 
-        .custom-navbar .navbar-link {
+        .custom-navbar .nav-link {
             color: white;
         }
 
@@ -67,7 +67,7 @@
                     <li class="nav-item"><a class="nav-link" href="browse.php">Browse</a></li>
                     <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
                     <li class="nav-item"><a class="nav-link" href="purchases.php">Purchases</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
                 </ul>
             </div>
         </div>
