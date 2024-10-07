@@ -12,10 +12,13 @@
             background-color: #980930;
             color: white;
             border-top: 8px solid black;
-            border-bottom: 7px solid black;
+            border-bottom: 8px solid black;
         }
 
-        .custom-navbar .navbar-brand,
+        .custom-navbar .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+        }
         .custom-navbar .nav-link {
             color: white !important;
         }
