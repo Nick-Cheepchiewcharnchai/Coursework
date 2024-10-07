@@ -24,7 +24,7 @@
         }
 
         .custom-navbar .navbar-brand img {
-            border-radius: 50%; /* Circular image */
+            border-radius: 100%; /* Circular image */
             width: 40px;
             height: 40px;
             margin-right: 10px;
