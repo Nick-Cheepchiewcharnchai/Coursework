@@ -41,7 +41,7 @@
 
         /* Styling for item boxes */
         .item-box {
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
         }
 
         .item-box:hover {
@@ -85,16 +85,18 @@
             </div>
             <div class="col-md-3">
                 <select class="form-select" id="categoryFilter">
-                    <option value="">Category</option>
-                    <!-- Dynamically populate categories -->
+                    <option value="">Shirts</option>
+                    <option value="">Trousers</option>
+                    <option value="">Accesories</option>
+                    <option value="">Others</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <select class="form-select" id="sortBy">
                     <option value="price">Newest</option>
                     <option value="price">Oldest</option>
-                    <option value="price">Cost (high to low)</option>
-                    <option value="price">Cost (low to high)</option>
+                    <option value="price">Cost (High to Low)</option>
+                    <option value="price">Cost (Low to High)</option>
                 </select>
             </div>
         </div>
