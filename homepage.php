@@ -56,7 +56,7 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
             <!-- Circular image before "Crosby Merch" -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="homepage.php">
                 <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="browse.php">Browse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="homepage.php">Browse</a></li>
                     <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
                     <li class="nav-item"><a class="nav-link" href="purchases.php">Purchases</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
@@ -114,7 +114,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Example of how you might dynamically load items from a database
             const items = [
-                {id: 1, name: "Item 1", price: 20.00, img1: "img/item1.jpg", img2: "img/item1_hover.jpg"},
+                {id: 1, name: "Item 1", price: 20.00, img1: "img/item1.jpg", img2: "item1_hover.jpg"},
                 {id: 2, name: "Item 2", price: 30.00, img1: "img/item2.jpg", img2: "img/item2_hover.jpg"},
                 // Additional items would be fetched from the database
             ];

@@ -15,7 +15,7 @@ try{
 			$authority=0;
 			break;
 		case "Admin":
-			$authority=2;
+			$authority=1;
 			break;
 	}
 
