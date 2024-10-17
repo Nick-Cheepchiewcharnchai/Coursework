@@ -75,7 +75,7 @@
 
     <!-- Main content area -->
     <div class="container mt-5">
-        <h2>View All</h2>
+        <h1>View All</h1>
         <p>Total no. of items: <span id="totalItems"></span></p>
 
         <!-- Search, Category Filter, Sort -->
