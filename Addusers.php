@@ -21,12 +21,12 @@ try{
 
 	$stmt = $conn->prepare("INSERT INTO tblusers (UserID,Firstname,Lastname,Username,Password,Authority)VALUES (null,:firstname,:lastname,:username,:password,:authority)");
 	
-    #$hashed_password = password_hash($_POST["Pword"], PASSWORD_DEFAULT);
+    $hashed_password = password_hash($_POST["passwd"], PASSWORD_DEFAULT);
 
 	$stmt->bindParam(':firstname', $_POST["firstname"]);
 	$stmt->bindParam(':lastname', $_POST["lastname"]);
 	$stmt->bindParam(':username', $_POST["username"]);
-	$stmt->bindParam(':password', $_POST["passwd"]);
+	$stmt->bindParam(':password', $hashed_password);
 	$stmt->bindParam(':authority', $authority);
 	$stmt->execute();
 }

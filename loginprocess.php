@@ -10,6 +10,8 @@ $stmt->bindParam(':username', $_POST["username"]);
 
 $stmt->execute();
 
+#HASH THE PASSWORD
+
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 { 
     if($row['Password']== $_POST['passwd']){
