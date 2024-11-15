@@ -6,8 +6,10 @@
   
 </head>
 <body>
+    
+<h2>Login</h2>
 
-<form action="loginprocess.php" method= "POST">
+<form action="loginprocess.php" method= "post">
     Username:<input type="text" name="username"><br>
     Password:<input type="password" name="passwd"><br>
     <input type="submit" value="Login">

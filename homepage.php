@@ -104,53 +104,25 @@
 
         <!-- Item Grid -->
         <div class="row" id="itemContainer">
-            <!-- Dynamically populated items from tblitems will go here -->
+            <?php
+
+            include_once ("connection.php");
+
+            array_map("htmlspecialchars", $_POST);
+            
+            $stmt = $conn->prepare("SELECT ItemID, Itemname, Itemcost, Picfront, Picback FROM tblitems;");
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo('<div class="col-md-3"><div class="container-fluid">');
+                echo('<div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
+                echo('<div><b>'.$row["Itemname"].'</b></div>£'.$row["Itemcost"].'<br>');
+                echo('</div></div>');
+            }
+            
+            ?>
         </div>
     </div>
 
-    <!-- Bootstrap and JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Example of how you might dynamically load items from a database
-            const items = [
-                {id: 1, name: "Item 1", price: 20.00, img1: "img/item1.jpg", img2: "item1_hover.jpg"},
-                {id: 2, name: "Item 2", price: 30.00, img1: "img/item2.jpg", img2: "img/item2_hover.jpg"},
-                // Additional items would be fetched from the database
-            ];
-
-            const itemContainer = document.getElementById('itemContainer');
-            const totalItems = document.getElementById('totalItems');
-
-            function displayItems(items) {
-                itemContainer.innerHTML = "";
-                items.forEach(item => {
-                    const itemBox = document.createElement('div');
-                    itemBox.classList.add('col-md-3', 'item-box', 'mb-4');
-                    itemBox.innerHTML = `
-                        <div class="card">
-                            <img src="${item.img1}" class="card-img-top" alt="${item.name}" onmouseover="this.src='${item.img2}'" onmouseout="this.src='${item.img1}'">
-                            <div class="card-body">
-                                <h5 class="card-title">${item.name}</h5>
-                                <p class="card-text">$${item.price.toFixed(2)}</p>
-                            </div>
-                        </div>
-                    `;
-                    itemContainer.appendChild(itemBox);
-                });
-                totalItems.textContent = items.length;
-            }
-
-            // Initial item display
-            displayItems(items);
-
-            // Add search and filter functionality (simplified)
-            document.getElementById('searchInput').addEventListener('input', function() {
-                const searchValue = this.value.toLowerCase();
-                const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue));
-                displayItems(filteredItems);
-            });
-        });
-    </script>
 </body>
 </html>

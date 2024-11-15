@@ -1,7 +1,5 @@
 <?php
 
-header('Location:users.php');
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -43,5 +41,7 @@ echo $_POST["lastname"]."<br>";
 echo $_POST["username"]."<br>";
 echo $_POST["passwd"]."<br>";
 echo $_POST["authority"]."<br>";
+
+header('Location:users.php');
 
 ?>

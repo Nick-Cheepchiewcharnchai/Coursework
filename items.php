@@ -8,7 +8,7 @@
 
 <body>
 
-<form action="additems.php" method = "post">
+<form action="additems.php" method = "post" enctype="multipart/form-data">
   Item name:<input type="text" name="itemname"><br>
   Item description:<input type="text" name="itemdescription"><br>
   Item type:<select name="itemtype">
@@ -18,8 +18,9 @@
     <option value="O">Others</option>
   </select><br>
   Item cost:<input type="text" name="itemcost"><br>
+  Picture front:<input type="file" id="picfront" name="picfront" accept="image/*"><br>
+  Picture back:<input type="file" id="picback" name="picback" accept="image/*"><br>
   <input type="submit" value="Add Item">
-                    <!--PICTURESSSS-->
 </form>
 
 <?php
