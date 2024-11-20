@@ -18,7 +18,11 @@ if (!$row){
     $hashed = $row['Password'];
     $attempt = $_POST['passwd'];
     if(password_verify($attempt,$hashed)){
-        header('Location: homepage.php');
+        if($row['Authority'] == 1){
+            header('Location: homepage.php');
+        }else{
+            header('Location: basket.php');
+        }
     }else{
         header('Location: login.php');
     }
