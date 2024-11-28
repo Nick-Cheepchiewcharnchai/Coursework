@@ -75,55 +75,9 @@
 
     <!-- Main content area -->
     <div class="container mt-5">
-        <h1>View All</h1>
-        <p>Total no. of items: <span id="totalItems"></span></p>
-
-        <!-- Search, Category Filter, Sort -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="searchInput" placeholder="Search...">
-            </div>
-            <div class="col-md-3">
-                <select class="form-select" id="categoryFilter">
-                    <option value="">All</option>
-                    <option value="">Shirts</option>
-                    <option value="">Trousers</option>
-                    <option value="">Accesories</option>
-                    <option value="">Others</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <select class="form-select" id="sortBy">
-                    <option value="price">Newest</option>
-                    <option value="price">Oldest</option>
-                    <option value="price">Cost (High to Low)</option>
-                    <option value="price">Cost (Low to High)</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Item Grid -->
-        <div class="row" id="itemContainer">
-            <?php
-
-            include_once ("connection.php");
-
-            array_map("htmlspecialchars", $_POST);
-            
-            $stmt = $conn->prepare("SELECT * FROM tblitems;");
-            $stmt->execute();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                echo('<div class="col-md-3">');
-                echo('<div class="container-fluid">');
-                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php"><div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
-                echo('<div><b>'.$row["Itemname"].'</b></div>£'.$row["Itemcost"].'<br>');
-                echo('</a></div>');
-                echo('</div>');
-            }
-
-            ?>
-        </div>
+        <h1><a style="text-decoration:none; color:inherit;" href="adminitems.php">Items</a></h1><br>
+        <h1><a style="text-decoration:none; color:inherit;" href="orders.php">Orders</a></h1><br>
+        <h1><a style="text-decoration:none; color:inherit;" href="accounts.php">Accounts</a></h1><br>
     </div>
 
 </body>

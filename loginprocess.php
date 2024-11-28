@@ -19,9 +19,9 @@ if (!$row){
     $attempt = $_POST['passwd'];
     if(password_verify($attempt,$hashed)){
         if($row['Authority'] == 1){
-            header('Location: homepage.php');
+            header('Location: adminhomepage.php');
         }else{
-            header('Location: basket.php');
+            header('Location: homepage.php');
         }
     }else{
         header('Location: login.php');
