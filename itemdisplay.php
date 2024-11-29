@@ -74,7 +74,9 @@
     </nav>
 
     <div class="container mt-5">
-        
+        <?php
+            echo($_SESSION["itemID"])
+        ?>
     </div>
     
 </body>

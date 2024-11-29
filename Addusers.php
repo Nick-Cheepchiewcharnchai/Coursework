@@ -1,47 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Users</title>
+</head>
+
+<body>
+
+<h2>Add a new user</h2>
+
+<form action="addinguser.php" method = "post">
+  Firstname:<input type="text" name="firstname" required><br>
+  Lastname:<input type="text" name="lastname" required><br>
+  Username:<input type="text" name="username" required><br>
+  Password:<input type="password" name="passwd" required><br>
+  <br>
+  <input type="radio" name="authority" value= "User" checked> User <br>
+  <input type="radio" name="authority" value="Admin"> Admin <br>
+  <input type="submit" value="Add User">
+</form>
+
+<h2>Existing users</h2>
+
 <?php
+  include_once('connection.php');
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+  $stmt = $conn->prepare("SELECT * FROM tblusers");
+  $stmt->execute();
 
-try{
-	include_once("connection.php");
-	array_map("htmlspecialchars", $_POST);
-
-	switch($_POST["authority"]){
-		case "User":
-			$authority=0;
-			break;
-		case "Admin":
-			$authority=1;
-			break;
-	}
-
-	$stmt = $conn->prepare("INSERT INTO tblusers (UserID,Firstname,Lastname,Username,Password,Authority)VALUES (null,:firstname,:lastname,:username,:password,:authority)");
-	
-    $hashed_password = password_hash($_POST["passwd"], PASSWORD_DEFAULT);
-
-	$stmt->bindParam(':firstname', $_POST["firstname"]);
-	$stmt->bindParam(':lastname', $_POST["lastname"]);
-	$stmt->bindParam(':username', $_POST["username"]);
-	$stmt->bindParam(':password', $hashed_password);
-	$stmt->bindParam(':authority', $authority);
-	$stmt->execute();
-}
-
-catch(PDOException $e)
-	{
-		echo "error".$e->getMessage();
-	}
-
-$conn=null;
-
-echo $_POST["firstname"]."<br>";
-echo $_POST["lastname"]."<br>";
-echo $_POST["username"]."<br>";
-echo $_POST["passwd"]."<br>";
-echo $_POST["authority"]."<br>";
-
-header('Location:users.php');
-
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    {
+      echo htmlspecialchars($row["Firstname"].' '.$row["Lastname"]."\n");
+    }
 ?>
+
+</body>
+</html>
+
