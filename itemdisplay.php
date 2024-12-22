@@ -6,49 +6,7 @@
     <title>Crosby Merch</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Navbar styling */
-        .custom-navbar {
-            background-color: #980930;
-            color: white;
-            border-top: 8px solid black;
-            border-bottom: 8px solid black;
-        }
-
-        .custom-navbar .navbar-brand {
-            font-weight: bold;
-            font-size: 28px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .custom-navbar .navbar-brand img {
-            border-radius: 100%; /* Circular image */
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .custom-navbar .nav-link {
-            color: white;
-        }
-
-        /* Hover effect for the links */
-        .custom-navbar .nav-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Styling for item boxes */
-        .item-box {
-            transition: all 0.5s ease;
-        }
-
-        .item-box:hover {
-            background-color: #f8f9fa;
-            transform: scale(1.05);
-        }
-    </style>
+    <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>
 
@@ -72,12 +30,45 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-5">
-        <?php
-            echo($_SESSION["itemID"])
-        ?>
-    </div>
     
+    <?php
+        
+        include_once ("connection.php");
+        
+        $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID;");
+        $stmt->bindParam(':itemID', $_GET['id']);
+        $stmt->execute();
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            echo('<div class="container mt-5">');
+            echo('<div class="row">');
+            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
+            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picback"].'" class="img-fluid "></div>');
+            echo('<div class="col-lg-4">');
+
+            echo('<div class="text-end">');
+            echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
+            echo('<h2>'.$row["Itemcost"].'</h>');
+            echo('</div>');
+
+            echo('<div>');
+            echo('<p><b>Size</b></p>');
+            $sizes = ["XLL", "XL", "L", "M", "S", "XS", "XSS"];
+            foreach ($sizes as $size){
+                echo('<button id="'.$size.'" type="button">'.$size.'<button>');
+            }
+            echo('</div>');
+
+            echo('<div>');
+            echo('<p><b>Quantity</b></p>');
+            echo('');
+            echo('</div>');
+
+            echo('</div>');
+            echo('</div>');
+            echo('</div>');
+        }
+    ?>
+
 </body>
 </html>

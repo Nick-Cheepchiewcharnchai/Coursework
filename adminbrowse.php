@@ -6,49 +6,7 @@
     <title>Crosby Merch</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Navbar styling */
-        .custom-navbar {
-            background-color: #980930;
-            color: white;
-            border-top: 8px solid black;
-            border-bottom: 8px solid black;
-        }
-
-        .custom-navbar .navbar-brand {
-            font-weight: bold;
-            font-size: 28px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .custom-navbar .navbar-brand img {
-            border-radius: 100%; /* Circular image */
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .custom-navbar .nav-link {
-            color: white;
-        }
-
-        /* Hover effect for the links */
-        .custom-navbar .nav-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Styling for item boxes */
-        .item-box {
-            transition: all 0.5s ease;
-        }
-
-        .item-box:hover {
-            background-color: #f8f9fa;
-            transform: scale(1.05);
-        }
-    </style>
+    <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>
 
@@ -56,7 +14,7 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
             <!-- Circular image before "Crosby Merch" -->
-            <a class="navbar-brand" href="homepage.php">
+            <a class="navbar-brand" href="adminhomepage.php">
                 <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +22,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="homepage.php">Browse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
-                    <li class="nav-item"><a class="nav-link" href="purchases.php">Purchases</a></li>
+                    <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
                 </ul>
             </div>
@@ -112,13 +70,11 @@
             
             $stmt = $conn->prepare("SELECT * FROM tblitems;");
             $stmt->execute();
-            session_start();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $_SESSION["itemID"] = $row["ItemID"];
                 echo('<div class="col-md-3">');
                 echo('<div class="container-fluid">');
-                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php"><div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
+                echo('<a style="text-decoration:none; color:inherit;" href="adminitemdisplay.php"><div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
                 echo('<div><b>'.$row["Itemname"].'</b></div>£'.$row["Itemcost"].'<br>');
                 echo('</a></div>');
                 echo('</div>');

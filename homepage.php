@@ -6,49 +6,7 @@
     <title>Crosby Merch</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Navbar styling */
-        .custom-navbar {
-            background-color: #980930;
-            color: white;
-            border-top: 8px solid black;
-            border-bottom: 8px solid black;
-        }
-
-        .custom-navbar .navbar-brand {
-            font-weight: bold;
-            font-size: 28px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .custom-navbar .navbar-brand img {
-            border-radius: 100%; /* Circular image */
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .custom-navbar .nav-link {
-            color: white;
-        }
-
-        /* Hover effect for the links */
-        .custom-navbar .nav-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Styling for item boxes */
-        .item-box {
-            transition: all 0.5s ease;
-        }
-
-        .item-box:hover {
-            background-color: #f8f9fa;
-            transform: scale(1.05);
-        }
-    </style>
+    <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>
 
@@ -107,20 +65,17 @@
             <?php
 
             include_once ("connection.php");
-
-            array_map("htmlspecialchars", $_POST);
             
             $stmt = $conn->prepare("SELECT * FROM tblitems;");
             $stmt->execute();
-            session_start();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $_SESSION["itemID"] = $row["ItemID"];
-                echo('<div class="col-md-3">');
-                echo('<div class="container-fluid">');
-                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php"><div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
-                echo('<div><b>'.$row["Itemname"].'</b></div>£'.$row["Itemcost"].'<br>');
-                echo('</a></div>');
+                echo('<div class="col-lg-3">');
+                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php?id='.$row["ItemID"].'">');
+                echo('<div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
+                echo('<div><b>'.$row["Itemname"].'</b></div>');
+                echo('<div>£'.$row["Itemcost"].'</div>');
+                echo('</a>');
                 echo('</div>');
             }
 
