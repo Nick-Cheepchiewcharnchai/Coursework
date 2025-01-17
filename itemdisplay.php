@@ -10,6 +10,14 @@
 </head>
 <body>
 
+    <?php
+    session_start(); 
+    if (!isset($_SESSION['name']))
+    {   
+        header("Location:login.php");
+    }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
@@ -25,7 +33,7 @@
                     <li class="nav-item"><a class="nav-link" href="homepage.php">Browse</a></li>
                     <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
                     <li class="nav-item"><a class="nav-link" href="purchases.php">Purchases</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -35,8 +43,9 @@
         
         include_once ("connection.php");
         
-        $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID;");
-        $stmt->bindParam(':itemID', $_GET['id']);
+        $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID");
+        $itemID = $_GET['id'];
+        $stmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
         $stmt->execute();
     
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -52,18 +61,40 @@
             echo('</div>');
 
             echo('<div>');
+            echo('<form action="addtobasket.php" method="post">');
+            echo('<input type="hidden" name="ItemID" value ="'.$row["ItemID"].'">');
+
+            echo('<div>');
             echo('<p><b>Size</b></p>');
-            $sizes = ["XLL", "XL", "L", "M", "S", "XS", "XSS"];
+            $sizes = ["XXL", "XL", "L", "M", "S", "XS", "XXS"];
             foreach ($sizes as $size){
-                echo('<button id="'.$size.'" type="button">'.$size.'<button>');
+                echo('<input type="radio" class="btn" name="SelectedSize" value ="'.$size.'" required>');
+                echo('<label class="btn btn-outline-dark" for="'.$size.'">'.$size.'</label>');
             }
+            
             echo('</div>');
 
             echo('<div>');
-            echo('<p><b>Quantity</b></p>');
-            echo('');
+            echo('<br><p><b>Quantity</b></p>');
+            echo('<select name="SelectedQuantity">');
+            echo('<option value="1" checked>1</option>');
+            echo('<option value="2">2</option>');
+            echo('<option value="3">3</option>');
+            echo('<option value="4">4</option>');
+            echo('<option value="5">5</option>');
+            echo('</select>');
             echo('</div>');
 
+            echo('<button type="submit" class="btn btn-dark mt-3">Add to Basket</button>');
+            echo('</form>');
+            
+            echo('<div>');
+            echo('<br><p><b>Description</b></p>');
+            echo($row['Itemdescription']);
+            echo('</div>');
+
+            echo('</div>');
+            
             echo('</div>');
             echo('</div>');
             echo('</div>');

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once ("connection.php");
 
@@ -18,6 +19,7 @@ if (!$row){
     $hashed = $row['Password'];
     $attempt = $_POST['passwd'];
     if(password_verify($attempt,$hashed)){
+        $_SESSION['name']=$row["UserID"];
         if($row['Authority'] == 1){
             header('Location: adminhomepage.php');
         }else{

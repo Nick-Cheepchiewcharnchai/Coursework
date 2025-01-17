@@ -40,6 +40,22 @@
     transform: scale(1.05);
 }
 
-button {
+.button {
     border: none;
+}
+
+.basket-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items:center;
+    background-color: #f2f2f2;
+    margin: 10px;
+}
+
+.confirm-button{
+    font-size: 20px;
+    font-weight: 200;
+    text-decoration-color: white;
+    background-color: #980930;
+    border-color: black;
 }

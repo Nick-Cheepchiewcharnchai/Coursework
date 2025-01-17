@@ -10,6 +10,14 @@
 </head>
 <body>
 
+<?php
+    session_start(); 
+    if (!isset($_SESSION['name']))
+    {   
+        header("Location:login.php");
+    }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
@@ -25,7 +33,7 @@
                     <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
                     <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
                     <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>

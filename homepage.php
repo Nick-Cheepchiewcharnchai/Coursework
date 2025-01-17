@@ -10,6 +10,14 @@
 </head>
 <body>
 
+    <?php
+    session_start(); 
+    if (!isset($_SESSION['name']))
+    {   
+        header("Location:login.php");
+    }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
@@ -25,7 +33,7 @@
                     <li class="nav-item"><a class="nav-link" href="homepage.php">Browse</a></li>
                     <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
                     <li class="nav-item"><a class="nav-link" href="purchases.php">Purchases</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -66,7 +74,7 @@
 
             include_once ("connection.php");
             
-            $stmt = $conn->prepare("SELECT * FROM tblitems;");
+            $stmt = $conn->prepare("SELECT * FROM tblitems");
             $stmt->execute();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
