@@ -1,41 +1,45 @@
 <?php
 
-ini_set('display_errors', 1);
+ini_set('display_errors', 1);  // Enable error reporting for display
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL);  // Report all errors
 
-try{
-	include_once("connection.php");
-	array_map("htmlspecialchars", $_POST);
+try {
+    include_once("connection.php");  // Include the database connection
+    array_map("htmlspecialchars", $_POST);  // Sanitize POST data
 
-	$stmt = $conn->prepare("SELECT BasketID FROM tblbasket WHERE UserID = :UserID AND IsOrdered = '1'");
-	$stmt->bindParam(':UserID', $_POST["UserID"]);
-	$stmt->execute();
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-		$deleteStmt = $conn->prepare("DELETE FROM tblbasketitems WHERE BasketID = ".$row['BasketID']);
-		$deleteStmt->execute();
-	}
+    // Prepare a statement to fetch BasketID for the user with IsOrdered = 1
+    $stmt = $conn->prepare("SELECT BasketID FROM tblbasket WHERE UserID = :UserID AND IsOrdered = '1'");
+    $stmt->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
+    $stmt->execute();  // Execute the query
 
-	$stmt1 = $conn->prepare("DELETE tblorders FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE tblorders.UserID = :UserID");
-	$stmt1->bindParam(':UserID', $_POST["UserID"]);
-	$stmt1->execute();
+    // Loop through the results and delete associated basket items
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Prepare the statement to delete items from tblbasketitems
+        $deleteStmt = $conn->prepare("DELETE FROM tblbasketitems WHERE BasketID = " . $row['BasketID']);
+        $deleteStmt->execute();  // Execute the delete query
+    }
 
-	$stmt2 = $conn->prepare("DELETE tblbasket FROM tblbasket INNER JOIN tblusers ON tblbasket.UserID = tblusers.UserID WHERE tblbasket.UserID = :UserID");
-	$stmt2->bindParam(':UserID', $_POST["UserID"]);
-	$stmt2->execute();
+    // Delete the user's orders from tblorders by joining tblusers on UserID
+    $stmt1 = $conn->prepare("DELETE tblorders FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE tblorders.UserID = :UserID");
+    $stmt1->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
+    $stmt1->execute();  // Execute the delete query
 
-	$stmt3 = $conn->prepare("DELETE FROM tblusers WHERE UserID = :UserID");
-	$stmt3->bindParam(':UserID', $_POST["UserID"]);
-	$stmt3->execute();
+    // Delete the user's basket from tblbasket by joining tblusers on UserID
+    $stmt2 = $conn->prepare("DELETE tblbasket FROM tblbasket INNER JOIN tblusers ON tblbasket.UserID = tblusers.UserID WHERE tblbasket.UserID = :UserID");
+    $stmt2->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
+    $stmt2->execute();  // Execute the delete query
+
+    // Finally, delete the user from tblusers table
+    $stmt3 = $conn->prepare("DELETE FROM tblusers WHERE UserID = :UserID");
+    $stmt3->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
+    $stmt3->execute();  // Execute the delete query
+}
+catch (PDOException $e) {
+    echo "error" . $e->getMessage();  // Catch and display any errors
 }
 
-catch(PDOException $e)
-	{
-		echo "error".$e->getMessage();
-	}
+$conn = null;  // Close the database connection
 
-$conn=null;
-
-header('Location:removeusers.php');
-
+header('Location:removeusers.php');  // Redirect to the page where users are removed
 ?>
