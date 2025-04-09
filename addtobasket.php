@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 try{
     include_once("connection.php");
 
-    $stmt = $conn->prepare("SELECT BasketID FROM tblBasket WHERE UserID = :UserID;");
+    $stmt = $conn->prepare("SELECT BasketID FROM tblBasket WHERE UserID = :UserID AND IsOrdered = 0;");
 
     $stmt->bindParam(':UserID', $_SESSION['name']);
     #echo($_SESSION['name']);

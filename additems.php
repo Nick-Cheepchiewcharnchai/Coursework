@@ -39,32 +39,35 @@
     </div>
   </nav>
 
-<form action="addingitem.php" method = "post" enctype="multipart/form-data">
-  Item name:<input type="text" name="itemname"><br>
-  Item description:<input type="text" name="itemdescription"><br>
-  Item type:<select name="itemtype">
-    <option value="T">Tops</option>
-    <option value="B">Bottoms</option>
-    <option value="A">Accessories</option>
-    <option value="O">Others</option>
-  </select><br>
-  Item cost:<input type="text" name="itemcost"><br>
-  Picture front:<input type="file" id="picfront" name="picfront" accept="image/*"><br>
-  Picture back:<input type="file" id="picback" name="picback" accept="image/*"><br>
-  <input type="submit" value="Add Item">
-</form>
-
-<?php
-  include_once('connection.php');
-
-  $stmt = $conn->prepare("SELECT * FROM tblitems");
-  $stmt->execute();
-
-  while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-    {
-      echo($row["Itemname"].' '.$row["Itemcost"]."<br>");
-    }
-?>
+  <div class="container mt-5">
+    <h1>Add item</h1><br>
+    <form action="addingitem.php" method = "post" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              Front picture:</br><input type="file" id="picfront" name="picfront" accept="image/*"><br>
+            </div>
+            <div class="col">
+              Back picture:</br><input type="file" id="picback" name="picback" accept="image/*"><br>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          Item name:</br><input type="text" class="form-control" name="itemname"><br>
+          Item price:</br><input type="text" class="form-control" name="itemcost"><br>
+          Item description:</br><textarea class="form-control" name="itemdescription" rows="4" cols="50"></textarea><br>
+          Item type:</br><select name="itemtype">
+            <option value="T">Tops</option>
+            <option value="B">Bottoms</option>
+            <option value="A">Accessories</option>
+            <option value="O">Others</option>
+          </select></br>
+          </br><input type="submit" class="confirm-button" value="Add Item">
+        </div>
+      </div>
+    </form>
+  </div>
 
 </body>
 </html>

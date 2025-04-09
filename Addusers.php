@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-  <title>Users</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crosby Merch</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="mystyle.css" rel="stylesheet">
 </head>
 
 <body>
 
-<h2>Add a new user</h2>
+  <?php
+  session_start(); 
+  if (!isset($_SESSION['name']))
+  {   
+  header("Location:login.php");
+  }
+  ?>
 
-<form action="addinguser.php" method = "post">
-  Firstname:<input type="text" name="firstname" required><br>
-  Lastname:<input type="text" name="lastname" required><br>
-  Username:<input type="text" name="username" required><br>
-  Password:<input type="password" name="passwd" required><br>
-  <br>
-  <input type="radio" name="authority" value= "User" checked> User <br>
-  <input type="radio" name="authority" value="Admin"> Admin <br>
-  <input type="submit" value="Add User">
-</form>
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <!-- Circular image before "Crosby Merch" -->
+      <a class="navbar-brand" href="adminhomepage.php">
+        <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
+        <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+        <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
+        <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container mt-5">
+  <h1>Add account</h1><br>
+  <form action="addinguser.php" method = "post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col">
+        <b>Firstname:</b></br><input type="text" class="form-control" name="firstname"><br>
+        <b>Surname:</b></br><input type="text" class="form-control" name="lastname"><br>
+        <b>Username:</b></br><input type="text" class="form-control" name="username"><br>
+        <b>Password:</b></br><input type="password" class="form-control" name="passwd"><br>
+      </div>
+      <div class="col">
+        <input type="radio" name="authority" value= "User" checked> User <br>
+        <input type="radio" name="authority" value="Admin"> Admin <br>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" class="confirm-button" value="Add Account">
+    </div>
+  </form>
+</div>
 
 </body>
 </html>

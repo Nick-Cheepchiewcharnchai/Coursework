@@ -44,7 +44,6 @@
         <h1>Items</h1><br>
         <h2><a style="text-decoration:none; color:#980930;" href="adminbrowse.php">Items list</a></h2><br>
         <h2><a style="text-decoration:none; color:#980930;" href="additems.php">Add item</a></h2><br>
-        <h2><a style="text-decoration:none; color:#980930;" href="removeitems.php">Remove item</a></h2><br>
     </div>
 
 </body>

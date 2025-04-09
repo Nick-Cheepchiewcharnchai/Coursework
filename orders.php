@@ -44,6 +44,7 @@
         <h1>Orders</h1><br>
         <h2><a style="text-decoration:none; color:#980930;" href="unprocessed.php">Unprocessed</a></h2><br>
         <h2><a style="text-decoration:none; color:#980930;" href="processed.php">Processed</a></h2><br>
+        <h2><a style="text-decoration:none; color:#980930;" href="completed.php">Completed</a></h2><br>
     </div>
 
 </body>

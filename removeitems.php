@@ -41,14 +41,12 @@
 
     <!-- Main content area -->
     <div class="container mt-5">
-        <h1>View All</h1>
+        <h1>Remove item</h1>
         <p>Total no. of items: <span id="totalItems"></span></p>
 
         <!-- Search, Category Filter, Sort -->
         <div class="row mb-4">
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="searchInput" placeholder="Search...">
-            </div>
+            <div class="col-md-6"></div>
             <div class="col-md-3">
                 <select class="form-select" id="categoryFilter">
                     <option value="">All</option>
@@ -73,20 +71,17 @@
             <?php
 
             include_once ("connection.php");
-
-            array_map("htmlspecialchars", $_POST);
             
-            $stmt = $conn->prepare("SELECT * FROM tblitems;");
+            $stmt = $conn->prepare("SELECT * FROM tblitems");
             $stmt->execute();
-            session_start();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $_SESSION["itemID"] = $row["ItemID"];
-                echo('<div class="col-md-3">');
-                echo('<div class="container-fluid">');
-                echo('<a style="text-decoration:none; color:inherit;" href="adminitemdisplay.php"><div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
-                echo('<div><b>'.$row["Itemname"].'</b></div>£'.$row["Itemcost"].'<br>');
-                echo('</a></div>');
+                echo('<div class="col-lg-3">');
+                echo('<a style="text-decoration:none; color:inherit;" href="removingitem.php?RIID='.$row["ItemID"].'">');
+                echo('<div><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" width="200" height="200"></div>');
+                echo('<div><b>'.$row["Itemname"].'</b></div>');
+                echo('<div>£'.$row["Itemcost"].'</div>');
+                echo('</a>');
                 echo('</div>');
             }
 

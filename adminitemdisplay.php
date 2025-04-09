@@ -38,12 +38,63 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-5">
-        <?php
-            
-        ?>
-    </div>
     
+    <?php
+        
+        include_once ("connection.php");
+        
+        $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID");
+        $itemID = $_GET['ABID'];
+        $stmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            echo('<div class="container mt-5">');
+            echo('<div class="row">');
+            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
+            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picback"].'" class="img-fluid "></div>');
+            echo('<div class="col-lg-4">');
+
+            echo('<div class="text-end">');
+            echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
+            echo('<h2>'.$row["Itemcost"].'</h>');
+            echo('</div>');
+
+            echo('<div>');
+
+            echo('<div>');
+            echo('<p><b>Size</b></p>');
+            $sizes = ["XXL", "XL", "L", "M", "S", "XS", "XXS"];
+            foreach ($sizes as $size){
+                echo('<input type="radio" class="btn" name="SelectedSize" value ="'.$size.'" required>');
+                echo('<label class="btn btn-outline-dark" for="'.$size.'">'.$size.'</label>');
+            }
+            
+            echo('</div>');
+
+            echo('<div>');
+            echo('<br><p><b>Quantity</b></p>');
+            echo('<select name="SelectedQuantity">');
+            echo('<option value="1" checked>1</option>');
+            echo('<option value="2">2</option>');
+            echo('<option value="3">3</option>');
+            echo('<option value="4">4</option>');
+            echo('<option value="5">5</option>');
+            echo('</select>');
+            echo('</div>');
+            
+            echo('<div>');
+            echo('<br><p><b>Description</b></p>');
+            echo($row['Itemdescription']);
+            echo('</div>');
+
+            echo('</div>');
+            
+            echo('</div>');
+            echo('</div>');
+            echo('</div>');
+        }
+    ?>
+
 </body>
 </html>

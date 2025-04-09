@@ -49,7 +49,7 @@
 
             include_once ("connection.php");
             
-            $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID INNER JOIN tblbasket ON tblbasketitems.BasketID = tblbasket.BasketID WHERE UserID = :UserID and IsOrdered = 0");
+            $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID INNER JOIN tblbasket ON tblbasketitems.BasketID = tblbasket.BasketID WHERE UserID = :UserID AND IsOrdered = 0");
 
             $stmt->bindParam(':UserID', $_SESSION['name']);
             $stmt->execute();
@@ -83,7 +83,7 @@
 
                 echo('</div>');
 
-                echo('<div class="col" style="flex:1;">X BUTTON</div>');
+                echo('<div class="col" style="flex:1;"></div>');
 
                 echo('</div>');
             }

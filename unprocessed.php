@@ -39,5 +39,26 @@
         </div>
     </nav>
 
+    <div class="container mt-5">
+        <h1>Unprocessed</h1>
+        <div class="row" id="baskets">
+            <?php
+
+            include_once ("connection.php");
+            
+            $stmt = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Unprocessed"');
+
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo('<div class="row basket-item">');
+                echo('<a style="text-decoration:none; color:inherit;" href="processorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                echo('</div>');
+            }
+
+            ?>
+        </div>
+    </div>
+
 </body>
 </html>

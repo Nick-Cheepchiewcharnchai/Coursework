@@ -28,10 +28,10 @@ try{
 	$stmt->bindParam(':authority', $authority);
 	$stmt->execute();
 
-	$stmt = $conn->prepare("SELECT UserID FROM tblusers WHERE Username = :username");
-	$stmt->bindParam(':username', $_POST["username"]);
-	$stmt->execute();
-	$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	$stmt2 = $conn->prepare("SELECT UserID FROM tblusers WHERE Username = :username");
+	$stmt2->bindParam(':username', $_POST["username"]);
+	$stmt2->execute();
+	$row = $stmt2->fetch(PDO::FETCH_ASSOC);
 
 	if($row) {
 		$insertStmt = $conn->prepare("INSERT INTO tblbasket (BasketID,UserID,IsOrdered)VALUES (null,:UserID,0)");

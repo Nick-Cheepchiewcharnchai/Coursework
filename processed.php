@@ -9,7 +9,7 @@
     <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>
-    
+
     <?php
     session_start(); 
     if (!isset($_SESSION['name']))
@@ -38,6 +38,27 @@
             </div>
         </div>
     </nav>
+
+    <div class="container mt-5">
+        <h1>Processed</h1>
+        <div class="row" id="baskets">
+            <?php
+
+            include_once ("connection.php");
+            
+            $stmt = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Processed"');
+
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo('<div class="row basket-item">');
+                echo('<a style="text-decoration:none; color:inherit;" href="completeorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                echo('</div>');
+            }
+
+            ?>
+        </div>
+    </div>
 
 </body>
 </html>

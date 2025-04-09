@@ -54,8 +54,16 @@
 
 .confirm-button{
     font-size: 20px;
-    font-weight: 200;
+    font-weight: bold;
     text-decoration-color: white;
     background-color: #980930;
     border-color: black;
+}
+
+.account-box{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    margin: 10px;
 }

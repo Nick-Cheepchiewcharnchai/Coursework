@@ -41,7 +41,9 @@
 
     <!-- Main content area -->
     <div class="container mt-5">
-        <div class="row" id="itemContainer">
+        <h1>Accounts list</h1>
+
+        <div class="row" id="accountsContainer">
             <?php
 
             include_once ("connection.php");
@@ -52,9 +54,9 @@
             $stmt->execute();
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                echo('<div class="row">');
+                echo('<div class="row account-box">');
                 echo('<div class="container-fluid">');
-                echo('<a class="nav-link" href="accountdislay.php">'.$row["Firstname"].$row["Lastname"].'</a>');
+                echo('<a class="nav-link" href="accountdisplay.php?ADID='.$row["UserID"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
                 echo('</div>');
             }

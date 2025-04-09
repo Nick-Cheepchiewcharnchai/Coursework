@@ -44,7 +44,7 @@
         include_once ("connection.php");
         
         $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID");
-        $itemID = $_GET['id'];
+        $itemID = $_GET['IID'];
         $stmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
         $stmt->execute();
     
