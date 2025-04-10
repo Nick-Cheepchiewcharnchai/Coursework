@@ -47,12 +47,28 @@
                             
                             <!-- Password input field -->
                             Password:</br><input type="password" class="form-control" name="passwd"><br>
-                            
+
                             <!-- Submit button for the login form -->
                             <div class="row">
                                 </br><input type="submit" class="btn btn-dark mt-3" value="Login">
                             </div>
                         </form>
+
+                        <?php
+                            session_start();
+
+                            //displays error message if incorrect username has been attempted then unset the session
+                            if (isset($_SESSION['usernamemessage'])){
+                                echo("<div class='row' style='color:red;'>".$_SESSION['usernamemessage']."</div>");
+                                unset($_SESSION['usernamemessage']);
+                            }
+                            //displays error message if incorrect username has been attempted then unset the session
+                            if (isset($_SESSION['passwordmessage'])){
+                                echo("<div class='row' style='color:red;'>".$_SESSION['passwordmessage']."</div>");
+                                unset($_SESSION['passwordmessage']);
+                            }
+                        ?>
+
                     </div>
                 </div>
                 <div class="p-5">

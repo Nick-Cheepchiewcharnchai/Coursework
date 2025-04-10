@@ -20,8 +20,9 @@ $stmt->execute();
 // Fetches the results as an associative array
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// If no user is found with the provided username, redirects back to the login page
+// If no user is found with the provided username, sets a session for a message to be displayed before redirecting back to the login page
 if (!$row){
+    $_SESSION['usernamemessage'] = 'Incorrect username, please try again';
     header('Location: login.php');
 }else{
     // Retrieves the hashed password stored in the database
@@ -43,7 +44,9 @@ if (!$row){
             header('Location: homepage.php');
         }
     }else{
-        // If the password verification fails, redirects back to the login page
+        // If the password verification fails, sets a session for a message to be displayed before redirecting back to the login page
+        $_SESSION['passwordmessage'] = 'Incorrect password, please try again';
+        echo($_SESSION['passwordmessage']);
         header('Location: login.php');
     }
 }

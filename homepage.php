@@ -16,84 +16,21 @@
     <!-- Link to a custom CSS file for additional styles (mystyle.css) -->
     <link href="mystyle.css" rel="stylesheet">
     
-    <script>
-        // JavaScript function to handle filtering, sorting, and searching of items
-        function filterItems() {
-            const searchQuery = document.getElementById("searchInput").value.toLowerCase();  // Gets the search input
-            const itemTypeFilter = document.getElementById("itemTypeFilter").value;  // Gets the selected item type filter
-            const sortBy = document.getElementById("sortBy").value;  // Gets the selected sorting option
-
-            const items = document.querySelectorAll(".item-card");  // Selects all item cards to filter
-
-            let visibleItemsCount = 0;  // Variable to count visible items
-
-            items.forEach(item => {
-                const itemName = item.querySelector(".item-name").textContent.toLowerCase();  // Gets the item name
-                const itemType = item.getAttribute("data-type");  // Gets the item type stored as data attribute
-                const itemPrice = parseFloat(item.querySelector(".item-price").textContent.substring(1));  // Extracts item price
-
-                // Check if item matches the search query
-                let matchesSearch = itemName.includes(searchQuery);
-                
-                // Check if item matches the selected item type filter
-                let matchesItemType = itemTypeFilter === "all" || itemType === itemTypeFilter;
-
-                // Display or hide items based on search query and item type filter
-                if (matchesSearch && matchesItemType) {
-                    item.style.display = "block";  // Shows the item
-                    visibleItemsCount++;  // Increments the visible items count
-                } else {
-                    item.style.display = "none";  // Hides the item
-                }
-            });
-
-            sortItems(sortBy);  // Sorts the items based on the selected sorting option
-
-            // Updates the total number of visible items
-            document.getElementById("totalItems").textContent = visibleItemsCount;
-
-            // Changes the heading based on the selected item type filter
-            const itemTypeName = itemTypeFilter === "all" ? "View All" : document.querySelector(`#itemTypeFilter option[value='${itemTypeFilter}']`).textContent;
-            document.getElementById("viewAllHeading").textContent = itemTypeName;
-        }
-
-        // JavaScript function to sort the items based on the selected sorting option
-        function sortItems(sortBy) {
-            const items = Array.from(document.querySelectorAll(".item-card"));  // Convert NodeList to an array
-            items.sort((a, b) => {
-                const priceA = parseFloat(a.querySelector(".item-price").textContent.substring(1));  // Extract price from item A
-                const priceB = parseFloat(b.querySelector(".item-price").textContent.substring(1));  // Extract price from item B
-
-                const nameA = a.querySelector(".item-name").textContent.toLowerCase();  // Get name of item A
-                const nameB = b.querySelector(".item-name").textContent.toLowerCase();  // Get name of item B
-
-                // Sort based on the selected option
-                if (sortBy === "priceLowToHigh") {
-                    return priceA - priceB;  // Sort by price (low to high)
-                } else if (sortBy === "priceHighToLow") {
-                    return priceB - priceA;  // Sort by price (high to low)
-                } else if (sortBy === "nameAZ") {
-                    return nameA.localeCompare(nameB);  // Sort by name (A-Z)
-                } else if (sortBy === "nameZA") {
-                    return nameB.localeCompare(nameA);  // Sort by name (Z-A)
-                }
-            });
-
-            const container = document.getElementById("itemContainer");
-            container.innerHTML = "";  // Clears the container
-            items.forEach(item => container.appendChild(item));  // Append sorted items back to the container
-        }
-    </script>
+    
 </head>
 <body>
 
     <?php
+    // Start the session to allow access to session variables
     session_start(); 
-    // Check if the user is logged in, if not, redirect to the login page
+
+    // Check if the session does not have a 'name' key, indicating the user is not logged in
     if (!isset($_SESSION['name'])) {   
-        header("Location: login.php");
+        // Redirect the user to the login page if not logged in
+        header("Location:login.php");
     }
     ?>
+
 
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg custom-navbar">
@@ -172,4 +109,72 @@
         </div>
     </div>
 </body>
+<script>
+    // JavaScript function to handle filtering, sorting, and searching of items
+    function filterItems() {
+        const searchQuery = document.getElementById("searchInput").value.toLowerCase();  // Gets the search input
+        const itemTypeFilter = document.getElementById("itemTypeFilter").value;  // Gets the selected item type filter
+        const sortBy = document.getElementById("sortBy").value;  // Gets the selected sorting option
+
+        const items = document.querySelectorAll(".item-card");  // Selects all item cards to filter
+
+        let visibleItemsCount = 0;  // Variable to count visible items
+
+        items.forEach(item => {
+            const itemName = item.querySelector(".item-name").textContent.toLowerCase();  // Gets the item name
+            const itemType = item.getAttribute("data-type");  // Gets the item type stored as data attribute
+            const itemPrice = parseFloat(item.querySelector(".item-price").textContent.substring(1));  // Extracts item price
+
+            // Check if item matches the search query
+            let matchesSearch = itemName.includes(searchQuery);
+                
+            // Check if item matches the selected item type filter
+            let matchesItemType = itemTypeFilter === "all" || itemType === itemTypeFilter;
+
+            // Display or hide items based on search query and item type filter
+            if (matchesSearch && matchesItemType) {
+                item.style.display = "block";  // Shows the item
+                visibleItemsCount++;  // Increments the visible items count
+            } else {
+                item.style.display = "none";  // Hides the item
+            }
+        });
+
+        sortItems(sortBy);  // Sorts the items based on the selected sorting option
+
+        // Updates the total number of visible items
+        document.getElementById("totalItems").textContent = visibleItemsCount;
+
+        // Changes the heading based on the selected item type filter
+        const itemTypeName = itemTypeFilter === "all" ? "View All" : document.querySelector(`#itemTypeFilter option[value='${itemTypeFilter}']`).textContent;
+        document.getElementById("viewAllHeading").textContent = itemTypeName;
+    }
+
+    // JavaScript function to sort the items based on the selected sorting option
+    function sortItems(sortBy) {
+        const items = Array.from(document.querySelectorAll(".item-card"));  // Convert NodeList to an array
+        items.sort((a, b) => {
+            const priceA = parseFloat(a.querySelector(".item-price").textContent.substring(1));  // Extract price from item A
+            const priceB = parseFloat(b.querySelector(".item-price").textContent.substring(1));  // Extract price from item B
+
+            const nameA = a.querySelector(".item-name").textContent.toLowerCase();  // Get name of item A
+            const nameB = b.querySelector(".item-name").textContent.toLowerCase();  // Get name of item B
+
+            // Sort based on the selected option
+            if (sortBy === "priceLowToHigh") {
+                return priceA - priceB;  // Sort by price (low to high)
+            } else if (sortBy === "priceHighToLow") {
+                return priceB - priceA;  // Sort by price (high to low)
+            } else if (sortBy === "nameAZ") {
+                return nameA.localeCompare(nameB);  // Sort by name (A-Z)
+            } else if (sortBy === "nameZA") {
+                return nameB.localeCompare(nameA);  // Sort by name (Z-A)
+            }
+        });
+
+        const container = document.getElementById("itemContainer");
+        container.innerHTML = "";  // Clears the container
+        items.forEach(item => container.appendChild(item));  // Append sorted items back to the container
+    }
+</script>
 </html>
