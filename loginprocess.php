@@ -1,20 +1,12 @@
 <?php
-// Starts a new session or resumes the current session to store session variables
 session_start();
 
-// Includes the connection script to connect to the database
 include_once("connection.php");
 
-// Sanitizes the input data using htmlspecialchars to prevent XSS (cross-site scripting)
 array_map("htmlspecialchars", $_POST);
 
-// Prepares a SQL query to fetch a user from the 'tblusers' table by their username
 $stmt = $conn->prepare("SELECT * FROM tblusers WHERE Username = :username;");
-
-// Binds the provided username from the POST request to the :username parameter in the SQL query
 $stmt->bindParam(':username', $_POST["username"]);
-
-// Executes the prepared statement
 $stmt->execute();
 
 // Fetches the results as an associative array
