@@ -23,7 +23,7 @@ if (!$row){
     if(password_verify($attempt, $hashed)){
         $_SESSION['name'] = $row["UserID"]
         
-        if($row['Authority'] == 1){
+        if($row['Authority'] == 0){
             echo("adminhomepage.php");
             //header('Location: adminhomepage.php');
         }else{

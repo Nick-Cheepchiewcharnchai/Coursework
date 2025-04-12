@@ -12,10 +12,11 @@ try {
     // Configures the PDO connection to throw exceptions if an error occurs
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    echo("Connected successfully");
+    //echo("Connected successfully");
 
 } catch(PDOException $e) {
     // Retrieves the error message if the connection fails
-    echo("Connection failed: ") . $e->getMessage();
+    //echo("Connection failed: ");
+    $e->getMessage();
 }
 ?>
