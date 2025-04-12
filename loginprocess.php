@@ -1,4 +1,3 @@
-loginprocess.php
 <?php
 // Starts a new session or resumes the current session to store session variables
 session_start();
