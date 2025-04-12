@@ -70,4 +70,14 @@ Quantity INT(1) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
+$stmt = $conn->prepare("DROP TABLE IF EXISTS TblOrders;
+CREATE TABLE TblOrders
+(OrderID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+UserID INT(4) UNSIGNED NOT NULL,
+BasketID INT(4) UNSIGNED NOT NULL,
+Status VARCHAR(11) DEFAULT 'Unprocessed',
+TotalCost DECIMAL(6,2) NOT NULL)");
+$stmt->execute();
+$stmt->closeCursor();
+
 ?>
