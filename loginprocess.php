@@ -21,7 +21,7 @@ if (!$row){
     $attempt = $_POST['passwd'];
     
     if(password_verify($attempt, $hashed)){
-        $_SESSION['name'] = $row["UserID"];
+        $_SESSION['name'] = $row["UserID"]
         
         if($row['Authority'] == 1){
             echo("adminhomepage.php");
