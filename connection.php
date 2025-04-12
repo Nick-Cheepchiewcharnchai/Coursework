@@ -1,14 +1,8 @@
 <?php
 // Sets the hostname for the MySQL database server
 $servername = "localhost";
-
-// Sets the username used to access the database
 $username = "root";
-
-// Sets the password used to access the database
 $password = "";
-
-// Specifies the name of the database to connect to
 $dbname = "CrosbyMerch";
 
 try {
@@ -17,9 +11,11 @@ try {
 
     // Configures the PDO connection to throw exceptions if an error occurs
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    echo("Connected successfully");
 
 } catch(PDOException $e) {
     // Retrieves the error message if the connection fails
-    $e->getMessage();
+    echo("Connection failed: ") . $e->getMessage();
 }
 ?>
