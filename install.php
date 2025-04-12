@@ -60,4 +60,14 @@ VALUES(1, 1),
       (2, 2)");
 $stmt->execute();
 
+$stmt = $conn->prepare("DROP TABLE IF EXISTS TblBasketItems;
+CREATE TABLE TblBasketItems
+(BasketItemID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+BasketID INT(4) UNSIGNED NOT NULL,
+ItemID INT(4) UNSIGNED NOT NULL,
+ItemSize VARCHAR(3) NOT NULL,
+Quantity INT(1) NOT NULL)");
+$stmt->execute();
+$stmt->closeCursor();
+
 ?>
