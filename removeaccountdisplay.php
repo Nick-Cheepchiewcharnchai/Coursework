@@ -81,7 +81,7 @@
 
     <!-- Form for removing the account -->
     <div class="row">
-      <form action="removinguser.php" method="post">
+      <form action="removingaccount.php" method="post">
         <!-- Hidden input to pass the UserID to the removing user script -->
         <?php
         echo('<input type="hidden" name="UserID" value ="'.$_GET['RAID'].'">');

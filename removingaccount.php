@@ -41,5 +41,5 @@ catch (PDOException $e) {
 
 $conn = null;  // Close the database connection
 
-header('Location:removeusers.php');  // Redirect to the page where users are removed
+header('Location:removeaccounts.php');  // Redirect to the page where users are removed
 ?>

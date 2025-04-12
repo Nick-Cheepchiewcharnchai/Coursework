@@ -53,10 +53,10 @@
         <h2><a style="text-decoration:none; color:#980930;" href="accountslist.php">Accounts list</a></h2><br>
 
         <!-- Link to the add users page -->
-        <h2><a style="text-decoration:none; color:#980930;" href="addusers.php">Add account</a></h2><br>
+        <h2><a style="text-decoration:none; color:#980930;" href="addaccounts.php">Add account</a></h2><br>
 
         <!-- Link to the remove users page -->
-        <h2><a style="text-decoration:none; color:#980930;" href="removeusers.php">Remove account</a></h2><br>
+        <h2><a style="text-decoration:none; color:#980930;" href="removeaccounts.php">Remove account</a></h2><br>
     </div>
 
 </body>

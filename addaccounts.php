@@ -50,7 +50,7 @@
     <h1>Add account</h1><br>
 
     <!-- Form to add a new user account -->
-    <form action="addinguser.php" method="post" enctype="multipart/form-data">
+    <form action="addingaccount.php" method="post" enctype="multipart/form-data">
       <div class="row">
         <!-- First column for user details -->
         <div class="col">

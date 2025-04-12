@@ -62,7 +62,7 @@
             // Each user is displayed as a link to a page for removing their account
             echo('<div class="row account-box">');
             echo('<div class="container-fluid">');
-            echo('<a class="nav-link" href="removeuserdisplay.php?RAID='.$row["UserID"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
+            echo('<a class="nav-link" href="removeaccountdisplay.php?RAID='.$row["UserID"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
             echo('</div>');
             echo('</div>');
         }

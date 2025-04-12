@@ -65,5 +65,5 @@ try {
 $conn = null;
 
 // Redirect the user back to the add user page after the operation is completed
-header('Location:addusers.php');
+header('Location:addaccounts.php');
 ?>
