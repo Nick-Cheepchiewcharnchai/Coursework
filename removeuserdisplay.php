@@ -66,11 +66,11 @@
 
         // Loop through the fetched results and display user information
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          // Display the user's details such as Firstname, Lastname, Username, and Password
+          // Display the user's details such as Firstname, Lastname, Username, and Password (commented out becausse it is hashed)
           echo("<p><b>Firstname:</b></p><p>".$row["Firstname"]."</p>");
           echo("<p><b>Surname:</b></p><p>".$row["Lastname"]."</p>");
           echo("<p><b>Username:</b></p><p>".$row["Username"]."</p>");
-          echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
+          //echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
         }
         ?>
       </div>

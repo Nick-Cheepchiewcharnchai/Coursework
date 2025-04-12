@@ -13,7 +13,7 @@ try {
     include_once("connection.php");
 
     // Prepare an SQL query to check if there is an existing basket for the logged-in user
-    $stmt = $conn->prepare("SELECT BasketID FROM tblBasket WHERE UserID = :UserID AND IsOrdered = 0;");
+    $stmt = $conn->prepare("SELECT BasketID FROM tblBaskets WHERE UserID = :UserID AND IsOrdered = 0;");
     
     // Bind the user ID from the session to the query
     $stmt->bindParam(':UserID', $_SESSION['name']);

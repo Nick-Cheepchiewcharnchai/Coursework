@@ -19,14 +19,14 @@ CREATE TABLE Tblitems
 Itemname VARCHAR(30) NOT NULL,
 Itemdescription VARCHAR(500),
 Itemtype VARCHAR(1) NOT NULL,
-Itemcost DECIMAL(6,2) NOT NULL,
+Itemcost DECIMAL(5,2) NOT NULL,
 Picfront VARCHAR(255) NOT NULL,
 Picback VARCHAR(255) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS TblBasket;
-CREATE TABLE TblBasket 
+$stmt = $conn->prepare("DROP TABLE IF EXISTS TblBaskets;
+CREATE TABLE TblBaskets 
 (BasketID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 UserID INT(4) UNSIGNED NOT NULL,
 IsOrdered TINYINT(1) DEFAULT 0)");
@@ -49,7 +49,7 @@ CREATE TABLE TblOrders
 UserID INT(4) UNSIGNED NOT NULL,
 BasketID INT(4) UNSIGNED NOT NULL,
 Status VARCHAR(11) DEFAULT 'Unprocessed',
-TotalCost DECIMAL(5,2) NOT NULL)");
+TotalCost DECIMAL(6,2) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 

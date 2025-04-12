@@ -71,7 +71,7 @@
         // Display the item name in a bold heading
         echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
         // Display the item price
-        echo('<h2>'.$row["Itemcost"].'</h2>');
+        echo('<h2>£'.$row["Itemcost"].'</h2>');
         echo('</div>');
         
         // Display a form for selecting size, quantity, and adding the item to the basket

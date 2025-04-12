@@ -23,8 +23,8 @@ try{
     // Execute the query to insert the order data into the database
     $stmt->execute();
 
-    // Prepare the SQL query to update the tblBasket table, setting IsOrdered to 1 for the current basket
-    $stmt2 = $conn->prepare("UPDATE tblBasket SET IsOrdered = 1 WHERE BasketID = :BasketID");
+    // Prepare the SQL query to update the tblBaskets table, setting IsOrdered to 1 for the current basket
+    $stmt2 = $conn->prepare("UPDATE tblBaskets SET IsOrdered = 1 WHERE BasketID = :BasketID");
 
     // Bind the BasketID session variable to the query parameter
     $stmt2->bindParam(':BasketID', $_SESSION['basket']);
@@ -33,7 +33,7 @@ try{
     $stmt2->execute();
 
     // Prepare the SQL query to insert a new basket for the user (set IsOrdered to 0)
-    $stmt3 = $conn->prepare("INSERT INTO tblbasket (BasketID, UserID, IsOrdered) VALUES (null, :UserID, 0)");
+    $stmt3 = $conn->prepare("INSERT INTO tblbaskets (BasketID, UserID, IsOrdered) VALUES (null, :UserID, 0)");
 
     // Bind the UserID session variable to the query parameter
     $stmt3->bindParam(':UserID', $_SESSION['name']);

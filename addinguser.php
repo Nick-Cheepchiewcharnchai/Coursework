@@ -47,7 +47,7 @@ try {
     // If a valid user is found, create a new basket for that user
     if ($row) {
         // Prepare the SQL query to insert a new basket for the user
-        $insertStmt = $conn->prepare("INSERT INTO tblbasket (BasketID, UserID, IsOrdered) VALUES (null, :UserID, 0)");
+        $insertStmt = $conn->prepare("INSERT INTO tblbaskets (BasketID, UserID, IsOrdered) VALUES (null, :UserID, 0)");
 
         // Bind the UserID retrieved from the previous query to the basket insertion statement
         $insertStmt->bindParam(':UserID', $row["UserID"]);

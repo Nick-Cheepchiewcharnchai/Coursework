@@ -63,7 +63,7 @@
             // Display item name and cost
             echo('<div class="text-end">');
             echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
-            echo('<h2>'.$row["Itemcost"].'</h2>');
+            echo('<h2>£'.$row["Itemcost"].'</h2>');
             echo('</div>');
 
             // Display size selection

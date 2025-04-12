@@ -60,7 +60,7 @@
             include_once ("connection.php");
             
             // Query to fetch basket items, joining related tables to get item details
-            $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID INNER JOIN tblbasket ON tblbasketitems.BasketID = tblbasket.BasketID WHERE UserID = :UserID AND IsOrdered = 0");
+            $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID INNER JOIN tblbaskets ON tblbasketitems.BasketID = tblbaskets.BasketID WHERE UserID = :UserID AND IsOrdered = 0");
 
             // Bind the user ID to the query parameter
             $stmt->bindParam(':UserID', $_SESSION['name']);

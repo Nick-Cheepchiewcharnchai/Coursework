@@ -53,7 +53,7 @@
         // Sanitize POST data to prevent potential security issues (XSS attacks)
         array_map("htmlspecialchars", $_POST);
 
-        // Prepare a SQL query to select all users with Authority = 0 (which likely means 'User' type)
+        // Prepare a SQL query to select all users with Authority = 0 (non-admins)
         $stmt = $conn->prepare("SELECT * FROM tblusers WHERE Authority = 0;");
         $stmt->execute();  // Execute the query
 

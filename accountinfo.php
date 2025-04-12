@@ -91,14 +91,11 @@
             echo("<p><b>Surname:</b></p><p>".$row["Lastname"]."</p>");
             // Display the username of the user
             echo("<p><b>Username:</b></p><p>".$row["Username"]."</p>");
-            // Display the password of the user (Note: displaying plain-text passwords is not a good practice in real applications)
-            echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
+            // Display the password of the user
+            // However, it is commented out because it displays the hashed password which is unhelpful
+            //echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
           }
         ?>
-      </div>
-      
-      <!-- Second column (currently empty) -->
-      <div class="col">
       </div>
     </div>
   </div>

@@ -57,7 +57,7 @@
         // Prepare a SQL query to fetch basket items and their details (joined with tblitems)
         $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID  WHERE BasketID = :basketID");
 
-        // Retrieve the BasketID from the URL query string (e.g., purchasebasket.php?BID=123)
+        // Retrieve the BasketID from the URL query string
         $basketID = $_GET['BID'];
 
         // Bind the BasketID parameter to the SQL query

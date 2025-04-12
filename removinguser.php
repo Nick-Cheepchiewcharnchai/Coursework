@@ -9,7 +9,7 @@ try {
     array_map("htmlspecialchars", $_POST);  // Sanitize POST data
 
     // Prepare a statement to fetch BasketID for the user with IsOrdered = 1
-    $stmt = $conn->prepare("SELECT BasketID FROM tblbasket WHERE UserID = :UserID AND IsOrdered = '1'");
+    $stmt = $conn->prepare("SELECT BasketID FROM tblbaskets WHERE UserID = :UserID AND IsOrdered = '1'");
     $stmt->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
     $stmt->execute();  // Execute the query
 
@@ -25,8 +25,8 @@ try {
     $stmt1->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
     $stmt1->execute();  // Execute the delete query
 
-    // Delete the user's basket from tblbasket by joining tblusers on UserID
-    $stmt2 = $conn->prepare("DELETE tblbasket FROM tblbasket INNER JOIN tblusers ON tblbasket.UserID = tblusers.UserID WHERE tblbasket.UserID = :UserID");
+    // Delete the user's basket from tblbaskets by joining tblusers on UserID
+    $stmt2 = $conn->prepare("DELETE tblbaskets FROM tblbaskets INNER JOIN tblusers ON tblbaskets.UserID = tblusers.UserID WHERE tblbaskets.UserID = :UserID");
     $stmt2->bindParam(':UserID', $_POST["UserID"]);  // Bind UserID from POST data
     $stmt2->execute();  // Execute the delete query
 
