@@ -46,4 +46,18 @@ VALUES('Item 1', 'The first item', 'T', 10.00, '1-front.jpg', '1-back.jpg'),
       ('Item 5', 'The fifth item', 'O', 199.99, '5-front.jpg', '5-back.jpg')");
 $stmt->execute();
 
+$stmt = $conn->prepare("DROP TABLE IF EXISTS TblBaskets;
+CREATE TABLE TblBaskets 
+(BasketID INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+UserID INT(4) UNSIGNED NOT NULL,
+IsOrdered TINYINT(1) DEFAULT 0)");
+$stmt->execute();
+$stmt->closeCursor();
+
+//creating basket for the test accounts
+$stmt = $conn->prepare("INSERT INTO TblBaskets(BasketID, UserID)
+VALUES(1, 1),
+      (2, 2)");
+$stmt->execute();
+
 ?>
