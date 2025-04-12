@@ -13,8 +13,8 @@ $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$row){
-    echo("wrong username");
-    //header('Location: login.php');
+    $_SESSION['usernamemessage'] = 'Incorrect username, please try again';
+    header('Location: login.php');
 }else{
     $hashed = $row['Password'];
     
@@ -24,15 +24,13 @@ if (!$row){
         $_SESSION['name'] = $row["UserID"];
         
         if($row['Authority'] == 1){
-            echo("adminhomepage.php");
             //header('Location: adminhomepage.php');
         }else{
-            echo("homepage.php");
             //header('Location: homepage.php');
         }
     }else{
-        echo("wrong password");
-        //header('Location: login.php');
+        $_SESSION['passwordmessage'] = 'Incorrect password, please try again';
+        header('Location: login.php');
     }
 }
 

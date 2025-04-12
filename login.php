@@ -28,6 +28,18 @@
                                 </br><input type="submit" class="btn btn-dark mt-3" value="Login">
                             </div>
                         </form>
+                        <?php
+                            session_start();
+                            if (isset($_SESSION['usernamemessage'])){
+                                echo("<div class='row' style='color:red;'>".$_SESSION['usernamemessage']."</div>");
+                                unset($_SESSION['usernamemessage']);
+                            }
+                            
+                            if (isset($_SESSION['passwordmessage'])){
+                                echo("<div class='row' style='color:red;'>".$_SESSION['passwordmessage']."</div>");
+                                unset($_SESSION['passwordmessage']);
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="p-5">
