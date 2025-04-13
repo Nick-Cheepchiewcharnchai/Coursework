@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg" style="background-color: grey;">
+<nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="homepage.php">Crosby Merch</a>
-        </div>
+        <a class="navbar-brand" href="homepage.php">
+            <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
+        </a>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="homepage.php">Browse</a></li>
             <li class="nav-item"><a class="nav-link" href="basket.php">Basket</a></li>
@@ -11,18 +11,3 @@
         </ul>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
