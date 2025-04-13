@@ -18,40 +18,8 @@
 </head>
 <body>
 
-    <?php
-    // Start the session to check whether the user is logged in or not
-    session_start();
-
-    // If the 'name' session variable is not set (i.e., the user is not logged in), redirect them to the login page
-    if (!isset($_SESSION['name'])) {
-        header("Location:login.php");
-    }
-    ?>
-
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <!-- Navbar brand (Logo and site name) -->
-            <a class="navbar-brand" href="adminhomepage.php">
-                <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-            </a>
-            
-            <!-- Navbar toggle button for responsive design (on smaller screens) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Navbar items (links to various sections) -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include("adminloggedin.php"); ?>
+    <?php include("adminnavbar.php"); ?>
 
     <!-- Main content section -->
     <div class="container mt-5">

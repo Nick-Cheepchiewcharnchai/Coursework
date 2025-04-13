@@ -9,6 +9,7 @@
 </head>
 <body>
 
+    <?php include("customerloggedin.php"); ?>
     <?php include("navbar.php"); ?>
 
 </body>

@@ -19,44 +19,8 @@
 
 <body>
 
-  <?php
-  // Start a session to track user authentication status
-  session_start(); 
-  
-  // Check if the user is logged in by verifying the 'name' session variable
-  if (!isset($_SESSION['name'])) {   
-      // If the user is not logged in, redirect them to the login page
-      header("Location:login.php");
-  }
-  ?>
-
-  <!-- Navigation Bar with links to different admin pages -->
-  <nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container-fluid">
-      <!-- Logo before "Crosby Merch" text in the navbar -->
-      <a class="navbar-brand" href="adminhomepage.php">
-        <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-      </a>
-      <!-- Navbar toggle button for mobile screens -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <!-- Navbar links (menu items) for different sections of the admin page -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <!-- Link to items page -->
-          <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-          <!-- Link to orders page -->
-          <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-          <!-- Link to accounts page -->
-          <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-          <!-- Link to logout page -->
-          <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include("adminloggedin.php"); ?>
+  <?php include("adminnavbar.php"); ?>
 
   <!-- Main content area -->
   <div class="container mt-5">

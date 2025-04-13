@@ -15,39 +15,8 @@
 </head>
 <body>
 
-    <?php
-    // Start the session to access session variables
-    session_start(); 
-    
-    // Check if the session variable 'name' is set. If not, redirect the user to the login page
-    if (!isset($_SESSION['name'])) {   
-        header("Location:login.php");
-    }
-    ?>
-
-    <!-- Navbar with links to different sections of the admin panel -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <!-- Crosby Merch logo and name in the navbar -->
-            <a class="navbar-brand" href="adminhomepage.php">
-                <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-            </a>
-            <!-- Navbar toggler for mobile responsiveness -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Collapsible navbar items for larger screens -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include("adminloggedin.php"); ?>
+    <?php include("adminnavbar.php"); ?>
 
     <!-- Main content area to display user account details -->
     <div class="container mt-5">

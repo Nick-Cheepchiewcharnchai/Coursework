@@ -11,42 +11,8 @@
 </head>
 <body>
 
-    <?php
-    // Starts the session or resumes an existing session
-    session_start(); 
-
-    // Checks if the 'name' session variable is set, which indicates that the user is logged in
-    if (!isset($_SESSION['name']))
-    {   
-        // Redirects to the login page if the user is not logged in
-        header("Location:login.php");
-    }
-    ?>
-
-    <!-- Navbar Section -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <!-- Logo and brand name section of the navbar, links to the admin homepage -->
-            <a class="navbar-brand" href="adminhomepage.php">
-                <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-            </a>
-            <!-- Navbar toggle button for mobile responsiveness -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar menu, collapses into a dropdown on smaller screens -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Links to navigate to different sections of the admin panel -->
-                    <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-                    <!-- Link for logging out -->
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include("adminloggedin.php"); ?>
+    <?php include("adminnavbar.php"); ?>
 
     <!-- Main content area -->
     <div class="container mt-5">

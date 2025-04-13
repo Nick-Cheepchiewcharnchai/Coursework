@@ -11,36 +11,8 @@
 
 <body>
 
-  <?php
-  // Start the session to access session variables
-  session_start(); 
-
-  // If the user is not logged in (session 'name' does not exist), redirect them to the login page
-  if (!isset($_SESSION['name'])) {   
-    header("Location:login.php");  // Redirect to login page
-  }
-  ?>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container-fluid">
-      <!-- Circular image before "Crosby Merch" -->
-      <a class="navbar-brand" href="adminhomepage.php">
-        <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-          <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-          <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-          <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <?php include("adminloggedin.php"); ?>
+  <?php include("adminnavbar.php"); ?>
 
   <!-- Main content area -->
   <div class="container mt-5">

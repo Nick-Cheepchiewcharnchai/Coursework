@@ -11,42 +11,8 @@
 </head>
 <body>
 
-    <?php
-    // Start a session to track user state
-    session_start(); 
-    
-    // Check if the 'name' session variable is set, indicating the user is logged in
-    if (!isset($_SESSION['name']))
-    {   
-        // If the user is not logged in, redirect to the login page
-        header("Location:login.php");
-    }
-    ?>
-
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <!-- Branding for the navbar, linking to the admin homepage -->
-            <a class="navbar-brand" href="adminhomepage.php">
-                <!-- Display the Crosby logo next to the brand name -->
-                <img src="Crosby-Logo.jpg" alt="Crosby"> Crosby Merch
-            </a>
-            <!-- Navbar toggle button for responsive layout (for mobile view) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar links, positioned to the right -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Menu items with links to different admin sections -->
-                    <li class="nav-item"><a class="nav-link" href="items.php">Items</a></li>
-                    <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="accounts.php">Accounts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include("adminloggedin.php"); ?>
+    <?php include("adminnavbar.php"); ?>
 
     <!-- Main content area for displaying the orders page -->
     <div class="container mt-5">
