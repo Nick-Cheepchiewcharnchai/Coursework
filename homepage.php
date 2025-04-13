@@ -22,6 +22,7 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo('<div class="col-lg-3 item-card" data-type="' . $row['Itemtype'] . '">');
                 echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php?IID=' . $row["ItemID"] . '">');
+                echo('<div><img src="/Coursework/Coursework-1/Pictures/' . $row["Picfront"] . '" width="200" height="200"></div>');
                 echo('<div class="item-name"><b>' . $row["Itemname"] . '</b></div>');
                 echo('<div class="item-price">£' . $row["Itemcost"] . '</div>');
                 echo('</a>');
