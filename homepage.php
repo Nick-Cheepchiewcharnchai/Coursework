@@ -12,6 +12,7 @@
     <?php include("customerloggedin.php"); ?>
     <?php include("navbar.php"); ?>
 
+    <div class="container mt-5">
         <?php
             include_once("connection.php");
 
@@ -20,14 +21,15 @@
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo('<div class="col-lg-3 item-card" data-type="' . $row['Itemtype'] . '">');
-                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php?IID=' . $row["ItemID"] . '">');
+                echo('<a style="text-decoration:none; color:inherit;" href="itemdisplay.php?">');
                 echo('<div class="item-name"><b>' . $row["Itemname"] . '</b></div>');
                 echo('<div class="item-price">£' . $row["Itemcost"] . '</div>');
                 echo('</a>');
                 echo('</div>');
             }
-            ?>
-
+        ?>
+    </div>
+            
 </body>
 
 </html>
