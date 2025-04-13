@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_SESSION['Name'])){
-    unset($_SESSION['Name']);
+if(isset($_SESSION['name'])){
+    unset($_SESSION['name']);
 }
 
 header("Location: login.php");
