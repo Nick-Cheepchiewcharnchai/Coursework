@@ -48,6 +48,10 @@ catch(PDOException $e)
     echo "error" . $e->getMessage();
 }
 
+// Unset session variables after purchase
+unset($_SESSION['basket']);
+unset($_SESSION['total']);
+
 // Close the database connection
 $conn = null;
 
