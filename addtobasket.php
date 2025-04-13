@@ -3,7 +3,7 @@
 // Start a session to track user data and shopping basket
 session_start();
 
-// Enable error reporting for debugging
+// Enable error reporting for debugging (only in development, should be turned off in production)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -13,7 +13,7 @@ try {
     include_once("connection.php");
 
     // Prepare an SQL query to check if there is an existing basket for the logged-in user
-    $stmt = $conn->prepare("SELECT BasketID FROM tblBasket WHERE UserID = :UserID AND IsOrdered = 0;");
+    $stmt = $conn->prepare("SELECT BasketID FROM tblBaskets WHERE UserID = :UserID AND IsOrdered = 0;");
     
     // Bind the user ID from the session to the query
     $stmt->bindParam(':UserID', $_SESSION['name']);

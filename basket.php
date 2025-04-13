@@ -16,7 +16,21 @@
         <h1>Basket</h1>
 
         <div class="row" id="basketContainer">
-            
+            <?php
+                include_once ("connection.php");
+                
+                $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID INNER JOIN tblbaskets ON tblbasketitems.BasketID = tblbaskets.BasketID WHERE UserID = :UserID AND IsOrdered = 0");
+
+                $stmt->bindParam(':UserID', $_SESSION['name']);
+                $stmt->execute();
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    echo($row["Itemname"]);
+                    echo($row["ItemSize"]);
+                    echo($row["Quantity"]);
+                    echo($row["Itemcost"]);
+                }
+            ?>
         </div>
         
     </div>
