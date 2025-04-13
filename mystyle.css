@@ -29,16 +29,6 @@
     margin-right: 10px;
 }
 
-/* Styling for item boxes */
-.item-box {
-    transition: all 0.5s ease;
-}
-
-.item-box:hover {
-    background-color: #f8f9fa;
-    transform: scale(1.05);
-}
-
 .button {
     border: none;
 }
