@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
-    
-    <!-- Sets the viewport for responsive design, ensuring the page adjusts for different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Title of the webpage displayed in the browser tab -->
     <title>Crosby Merch</title>
-    
-    <!-- Link to Bootstrap CSS for styling the page -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Link to a custom CSS file for additional styles (mystyle.css) -->
     <link href="mystyle.css" rel="stylesheet">
-    
-    
 </head>
 <body>
 
@@ -76,6 +65,10 @@
         </div>
     </div>
 </body>
+
+<!-- Bootstrap JS bundle (needed for navbar toggle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
     // JavaScript function to handle filtering, sorting, and searching of items
     function filterItems() {
@@ -143,5 +136,7 @@
         container.innerHTML = "";  // Clears the container
         items.forEach(item => container.appendChild(item));  // Append sorted items back to the container
     }
+    // Automatically run filtering when the page finishes loading
+    window.onload = filterItems;
 </script>
 </html>

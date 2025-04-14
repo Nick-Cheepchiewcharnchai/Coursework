@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Specifies the character encoding for the document -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
-  <title>Crosby Merch</title> <!-- Title of the page in the browser tab -->
-  <!-- Link to Bootstrap CSS for responsive and styled components -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crosby Merch</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Link to custom CSS file for additional styling -->
   <link href="mystyle.css" rel="stylesheet">
 </head>
 

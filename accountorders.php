@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Set character encoding to UTF-8, which supports a wide range of characters -->
     <meta charset="UTF-8">
-
-    <!-- Ensure proper scaling of the page on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title that appears on the browser tab -->
     <title>Crosby Merch</title>
-
-    <!-- Link to Bootstrap CSS for pre-styled components and grid system -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Link to custom stylesheet for additional styles -->
     <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>

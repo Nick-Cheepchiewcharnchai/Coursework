@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Character encoding set to UTF-8 to ensure the proper display of characters -->
     <meta charset="UTF-8">
-    <!-- Viewport setting for responsiveness, ensuring proper scaling on different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title displayed on the browser tab -->
     <title>Crosby Merch</title>
-
-    <!-- Linking to Bootstrap 5 CSS for responsive design and pre-built UI components -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link to a custom CSS file for additional styling -->
     <link href="mystyle.css" rel="stylesheet">
 </head>
 <body>
