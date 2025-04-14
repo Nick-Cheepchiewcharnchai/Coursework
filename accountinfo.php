@@ -19,7 +19,7 @@
     <h1>Account Info</h1></br>
 
     <div class="row">
-      <!-- First column to display account information -->
+      <!-- column to display account information -->
       <div class="col">
         <?php
           // Include the database connection script to interact with the database
