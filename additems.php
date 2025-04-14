@@ -13,40 +13,22 @@
   <?php include("adminloggedin.php"); ?>
   <?php include("adminnavbar.php"); ?>
 
-  <!-- Main Content Section -->
   <div class="container mt-5">
     <h1>Add item</h1><br>
-    <!-- Form to add an item, submits to 'addingitem.php' -->
-    <form action="addingitem.php" method="post" enctype="multipart/form-data">
-      <div class="row">
-        <div class="col">
-          <!-- Section to upload front and back pictures of the item -->
-          <div class="row">
-            <div class="col">
-              Front picture:</br><input type="file" id="picfront" name="picfront" accept="image/*"><br> <!-- File input for front picture -->
-            </div>
-            <div class="col">
-              Back picture:</br><input type="file" id="picback" name="picback" accept="image/*"><br> <!-- File input for back picture -->
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <!-- Section for entering item details (name, price, description, type) -->
-          Item name:</br><input type="text" class="form-control" name="itemname"><br> <!-- Text input for item name -->
-          Item price:</br><input type="text" class="form-control" name="itemcost"><br> <!-- Text input for item price -->
-          Item description:</br><textarea class="form-control" name="itemdescription" rows="4" cols="50"></textarea><br> <!-- Textarea for item description -->
-          
-          <!-- Dropdown to select item type -->
-          Item type:</br><select name="itemtype">
-            <option value="T">Tops</option> <!-- Option for Tops -->
-            <option value="B">Bottoms</option> <!-- Option for Bottoms -->
-            <option value="A">Accessories</option> <!-- Option for Accessories -->
-            <option value="O">Others</option> <!-- Option for Other categories -->
-          </select></br>
 
-          </br><input type="submit" class="confirm-button" value="Add Item"> <!-- Submit button to add the item -->
-        </div>
-      </div>
+    <form action="addingitem.php" method="post" enctype="multipart/form-data">
+      Front picture:</br><input type="file" id="picfront" name="picfront" accept="image/*"><br>
+      Back picture:</br><input type="file" id="picback" name="picback" accept="image/*"><br>
+      Item name:</br><input type="text" name="itemname"><br>
+      Item price:</br><input type="text" name="itemcost"><br>
+      Item description:</br><textarea name="itemdescription" rows="4" cols="50"></textarea><br>
+      Item type:</br><select name="itemtype">
+        <option value="T">Tops</option>
+        <option value="B">Bottoms</option>
+        <option value="A">Accessories</option>
+        <option value="O">Others</option>
+      </select></br>
+      </br><input type="submit" class="button" value="Add Item">
     </form>
   </div>
 
