@@ -33,7 +33,7 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo('<div class="row account-box">');
                 echo('<div class="container-fluid">');
-                // Link to display account details, passing the UserID as a query parameter
+                // Link to display account details, passing the UserID, First and Last name as a query parameter
                 echo('<a class="nav-link" href="accountdisplay.php?ADID='.$row["UserID"].'&FN='.
                 $row["Firstname"].'&LN='.$row["Lastname"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
