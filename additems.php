@@ -17,19 +17,34 @@
     <h1>Add item</h1><br>
 
     <form action="addingitem.php" method="post" enctype="multipart/form-data">
-      Front picture:</br><input type="file" id="picfront" name="picfront" accept="image/*"><br>
-      Back picture:</br><input type="file" id="picback" name="picback" accept="image/*"><br>
-      Item name:</br><input type="text" name="itemname"><br>
-      Item price:</br><input type="text" name="itemcost"><br>
-      Item description:</br><textarea name="itemdescription" rows="4" cols="50"></textarea><br>
-      Item type:</br><select name="itemtype">
-        <option value="T">Tops</option>
-        <option value="B">Bottoms</option>
-        <option value="A">Accessories</option>
-        <option value="O">Others</option>
-      </select></br>
-      </br><input type="submit" class="button" value="Add Item">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              Front picture:</br><input class="form-control" type="file" id="picfront" name="picfront" accept="image/*" required><br>
+            </div>
+            <div class="col">
+              Back picture:</br><input class="form-control" type="file" id="picback" name="picback" accept="image/*" required><br>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          Item name:</br><input type="text" class="form-control" name="itemname" required><br>
+          Item price:</br><input type="text" class="form-control" name="itemcost" required><br>
+          Item description:</br><textarea class="form-control" name="itemdescription" rows="4" cols="50"></textarea><br>
+          
+          Item type:</br><select class="form-select" name="itemtype" required>
+            <option value="T">Tops</option>
+            <option value="B">Bottoms</option>
+            <option value="A">Accessories</option>
+            <option value="O">Others</option>
+          </select></br>
+
+          </br><input type="submit" class="confirm-button" value="Add Item">
+        </div>
+      </div>
     </form>
+    
   </div>
 
 </body>
