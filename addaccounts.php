@@ -23,10 +23,10 @@
       <div class="row">
         <!-- First column for user details -->
         <div class="col">
-          <b>Firstname:</b><br><input type="text" class="form-control" name="firstname"><br>
-          <b>Surname:</b><br><input type="text" class="form-control" name="lastname"><br>
-          <b>Username:</b><br><input type="text" class="form-control" name="username"><br>
-          <b>Password:</b><br><input type="password" class="form-control" name="passwd"><br>
+          <b>Firstname:</b><br><input type="text" class="form-control" name="firstname" required><br>
+          <b>Surname:</b><br><input type="text" class="form-control" name="lastname" required><br>
+          <b>Username:</b><br><input type="text" class="form-control" name="username" required><br>
+          <b>Password:</b><br><input type="password" class="form-control" name="passwd" required><br>
         </div>
         
         <!-- Second column for user authority selection -->
