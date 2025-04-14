@@ -12,14 +12,20 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
+    <!-- Main content area -->
     <div class="container mt-5">
+
         <?php 
-        echo('<h1>'.$_GET['FN'].' '.$_GET['LN'].'</h1><br>');
-    
-        echo('<h2><a style="text-decoration:none; color:#980930;" href="accountinfo.php?AIID='.$_GET['ADID'].'">Account Info</a></h2><br>');
-        echo('<h2><a style="text-decoration:none; color:#980930;" href="accountorders.php?AOID='.$_GET['ADID'].'">Orders</a></h2><br>');
+        // Display the full name of the user using GET parameters FN (First Name) and LN (Last Name)
+        echo('<h1>' . $_GET['FN'] . ' ' . $_GET['LN'] . '</h1><br>');
+
+        // Display a link to the account info page, passing the UserID (using GET parameters) as a query parameter
+        echo('<h2><a style="text-decoration:none; color:#980930;" href="accountinfo.php?AIID=' . $_GET['ADID'] . '">Account Info</a></h2><br>');
+
+        // Display a link to the account orders page, passing the UserID (using GET parameters) as a query parameter
+        echo('<h2><a style="text-decoration:none; color:#980930;" href="accountorders.php?AOID=' . $_GET['ADID'] . '">Orders</a></h2><br>');
         ?>
     </div>
-
+    
 </body>
 </html>
