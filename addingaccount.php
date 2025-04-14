@@ -23,7 +23,8 @@ try {
     }
 
     // Prepare the SQL query to insert a new user into the 'tblusers' table
-    $stmt = $conn->prepare("INSERT INTO tblusers (UserID, Firstname, Lastname, Username, Password, Authority) VALUES (null, :firstname, :lastname, :username, :password, :authority)");
+    $stmt = $conn->prepare("INSERT INTO tblusers (UserID, Firstname, Lastname, Username, Password, Authority)
+                            VALUES (null, :firstname, :lastname, :username, :password, :authority)");
 
     // Hash the password before storing it in the database for security
     $hashed_password = password_hash($_POST["passwd"], PASSWORD_DEFAULT);
