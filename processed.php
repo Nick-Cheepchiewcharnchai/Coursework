@@ -30,8 +30,8 @@
             // Fetch each row and display the order information
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo('<div class="row basket-item">');
-                // Create a clickable link for each order, passing parameters to `processorder.php` for further processing
-                echo('<a style="text-decoration:none; color:inherit;" href="processorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                // Create a clickable link for each order, passing parameters to `completeorder.php` for further processing
+                echo('<a style="text-decoration:none; color:inherit;" href="completeorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
             }
             ?>
