@@ -12,27 +12,26 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
-    <!-- Main content area -->
+    <!-- Main content area displaying unprocessed orders -->
     <div class="container mt-5">
-        <h1>Processed</h1> <!-- Page heading -->
-
-        <!-- Row to hold all the processed orders -->
+        <!-- Title for the page -->
+        <h1>Processed</h1>
         <div class="row" id="baskets">
             <?php
-            // Include the database connection file
-            include_once ("connection.php");
+            // Include the database connection
+            include_once("connection.php");
             
-            // Prepare the SQL query to fetch orders with the 'Processed' status from the tblorders table
+            // Prepare the SQL query to select processed orders and join them with user details
             $stmt = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Processed"');
-
-            // Execute the prepared statement
+            
+            // Execute the query
             $stmt->execute();
-
-            // Loop through the results and display each processed order
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                // Create a row for each order with a link to the completeorder.php page, passing BasketID and user details as parameters
+            
+            // Fetch each row and display the order information
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo('<div class="row basket-item">');
-                echo('<a style="text-decoration:none; color:inherit;" href="completeorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                // Create a clickable link for each order, passing parameters to `processorder.php` for further processing
+                echo('<a style="text-decoration:none; color:inherit;" href="processorder.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
             }
             ?>

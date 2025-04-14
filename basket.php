@@ -86,7 +86,7 @@
             <div class="col-5" style="background-color: #f2f2f2; padding: 10px;">
                 <!-- Display the total price of the items in the basket -->
                 <?php
-                    echo('<p><b>Total: £'.$_SESSION["total"].'</b></p>');
+                    echo('<p><b>Total: £'.number_format((float)$_SESSION["total"],2,".").'</b></p>');
                 ?>
                 <!-- Button to confirm the purchase -->
                 <div class="container" style="text-align: center;">
