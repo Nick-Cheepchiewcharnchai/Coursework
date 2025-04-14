@@ -12,27 +12,26 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
-    <!-- Main content area displaying completed orders -->
+    <!-- Main content area displaying unprocessed orders -->
     <div class="container mt-5">
-        <!-- Heading for the page -->
+        <!-- Title for the page -->
         <h1>Completed</h1>
-        <!-- Row to display completed orders -->
         <div class="row" id="baskets">
             <?php
-            // Include database connection file
-            include_once ("connection.php");
+            // Include the database connection
+            include_once("connection.php");
             
-            // Prepare SQL query to fetch all completed orders from tblorders and join with tblusers to get user details
+            // Prepare the SQL query to select processed orders and join them with user details
             $stmt = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Completed"');
-
+            
             // Execute the query
             $stmt->execute();
-
-            // Loop through the result set and display each completed order in a row
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            
+            // Fetch each row and display the order information
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo('<div class="row basket-item">');
-                // Display a link for each completed order, passing BasketID, Firstname, and Lastname as query parameters
-                echo('<a style="text-decoration:none; color:inherit;" href="completedetail.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                // Create a clickable link for each order, passing parameters to `completeorder.php` for further processing
+                echo('<a style="text-decoration:none; color:inherit;" href="completdetail.php?BID='.$row["BasketID"].'&FN='.$row["Firstname"].'&LN='.$row["Lastname"].'">Basket: '.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
             }
             ?>
