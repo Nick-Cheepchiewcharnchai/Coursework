@@ -12,12 +12,16 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
+    <!-- Main content area -->
     <div class="container mt-5">
         <h1>Items</h1><br>
+        <!-- Link to view the list of items -->
         <h2><a style="text-decoration:none; color:#980930;" href="adminbrowse.php">Items list</a></h2><br>
 
+        <!-- Link to add a new item -->
         <h2><a style="text-decoration:none; color:#980930;" href="additems.php">Add item</a></h2><br>
 
+        <!-- Link to remove an existing item -->
         <h2><a style="text-decoration:none; color:#980930;" href="removeitems.php">Remove item</a></h2><br>
     </div>
 
