@@ -35,6 +35,9 @@ catch(PDOException $e)
     echo "error" . $e->getMessage();
 }
 
+unset($_SESSION['basket']);
+unset($_SESSION['total']);
+
 $conn = null;
 
 header('Location: purchases.php');
