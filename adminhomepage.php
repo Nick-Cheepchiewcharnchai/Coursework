@@ -12,9 +12,7 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
-    <!-- Main content area -->
     <div class="container mt-5">
-        <!-- Links to navigate to different sections of the admin panel -->
         <h1><a style="text-decoration:none; color:inherit;" href="items.php">Items</a></h1><br>
         <h1><a style="text-decoration:none; color:inherit;" href="orders.php">Orders</a></h1><br>
         <h1><a style="text-decoration:none; color:inherit;" href="accounts.php">Accounts</a></h1><br>
