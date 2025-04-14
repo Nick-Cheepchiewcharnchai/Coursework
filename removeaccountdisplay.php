@@ -15,49 +15,51 @@
 
   <!-- Main content area -->
   <div class="container mt-5">
-    <h1>Remove</h1><br> <!-- Title for the page -->
+    <!-- Page heading -->
+    <h1>Remove</h1></br>
+
     <div class="row">
+      <!-- column to display account information -->
       <div class="col">
         <?php
-        // Include the database connection file
-        include_once ("connection.php");
+          // Include the database connection script to interact with the database
+          include_once ("connection.php");
 
-        // Sanitize any POST data (though the form in this case uses GET for UserID)
-        array_map("htmlspecialchars", $_POST);
+          // Sanitize the incoming POST data to avoid XSS attacks (although no POST data is actually used here)
+          array_map("htmlspecialchars", $_POST);
+          
+          // Prepare a SQL statement to fetch data for a specific user based on the UserID
+          $stmt = $conn->prepare("SELECT * FROM tblusers WHERE UserID = :UserID;");
 
-        // Prepare a SQL query to select a user by their UserID
-        $stmt = $conn->prepare("SELECT * FROM tblusers WHERE UserID = :UserID;");
+          // Retrieve the 'RAID' parameter from the URL query string (GET method)
+          $userID = $_GET['RAID'];
+          // Bind the UserID parameter to the SQL query
+          $stmt->bindParam(':UserID', $userID);
+          // Execute the SQL query
+          $stmt->execute();
 
-        // Get the UserID from the query parameter in the URL (GET request)
-        $userID = $_GET['RAID'];
-
-        // Bind the UserID parameter to the prepared statement
-        $stmt->bindParam(':UserID', $userID);
-        $stmt->execute();  // Execute the query to fetch the user details
-
-        // Loop through the fetched results and display user information
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          // Display the user's details such as Firstname, Lastname, Username, and Password (commented out becausse it is hashed)
-          echo("<p><b>Firstname:</b></p><p>".$row["Firstname"]."</p>");
-          echo("<p><b>Surname:</b></p><p>".$row["Lastname"]."</p>");
-          echo("<p><b>Username:</b></p><p>".$row["Username"]."</p>");
-          //echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
-        }
+          // Fetch the data and display it
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            // Display the first name of the user
+            echo("<p><b>Firstname:</b></p><p>".$row["Firstname"]."</p>");
+            // Display the last name of the user
+            echo("<p><b>Surname:</b></p><p>".$row["Lastname"]."</p>");
+            // Display the username of the user
+            echo("<p><b>Username:</b></p><p>".$row["Username"]."</p>");
+            // Display the password of the user
+            // However, it is commented out because it displays the hashed password which is unhelpful
+            //echo("<p><b>Password:</b></p><p>".$row["Password"]."</p>");
+          }
         ?>
-      </div>
-      <div class="col">
-        <!-- This empty column is reserved for layout or future use -->
       </div>
     </div>
 
     <!-- Form for removing the account -->
     <div class="row">
       <form action="removingaccount.php" method="post">
-        <!-- Hidden input to pass the UserID to the removing user script -->
         <?php
         echo('<input type="hidden" name="UserID" value ="'.$_GET['RAID'].'">');
         ?>
-        <!-- Submit button to confirm removal of the account -->
         <input type="submit" class="confirm-button" value="Remove Account">
       </form>
     </div>
