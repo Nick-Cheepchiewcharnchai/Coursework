@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crosby Merch</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="mystyle.css" rel="stylesheet">
@@ -12,82 +12,81 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
-    <!-- Main content area -->
+    <!-- Main content area: displaying basket details -->
     <div class="container mt-5">
 
+        <!-- Displaying the basket items -->
         <div class="row" id="basketContainer">
             <?php
-            // Initialize the total cost for the basket
+            // Initializing total session variable
             $_SESSION["total"] = 0;
 
-            // Include the database connection file
+            // Include database connection
             include_once ("connection.php");
-        
-            // Prepare the SQL query to fetch basket items based on the BasketID
+
+            // Prepare SQL query to fetch basket items and their associated product details
             $stmt = $conn->prepare("SELECT * FROM tblbasketitems INNER JOIN tblitems ON tblbasketitems.ItemID = tblitems.ItemID WHERE BasketID = :basketID");
 
-            // Retrieve the BasketID from the URL parameter
+            // Get the basket ID from the URL parameters
             $basketID = $_GET['BID'];
-
-            // Bind the BasketID parameter to the SQL query
             $stmt->bindParam(':basketID', $basketID);
-            
-            // Execute the query
             $stmt->execute();
             
-            // Display the basket owner (user's name)
+            // Display the user's full name (passed via URL parameters)
             echo('<h1>Basket: '.$_GET['FN'].' '.$_GET['LN'].'</h1>');
 
-            // Loop through the results of the query
+            // Loop through each basket item and display its details
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                // Display each item in the basket
                 echo('<div class="row basket-item">');
 
-                // Display the image of the item
+                // Item image
                 echo('<div class="col" style="flex:1;"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
 
-                // Display item name, cost, size, quantity, and total cost for that item
+                // Item name, size, quantity, cost, and total
                 echo('<div class="col" style="flex:6;">');
                 echo('<div class="row" style="font-weight:bold; text-decoration:underline;">'.$row["Itemname"].'</div>');
                 echo('<div class="row">');
+
                 echo('<div class="col">');
                 echo('<div class="row">Cost: £'.$row["Itemcost"].'</div>');
                 echo('<div class="row">Size: '.$row["ItemSize"].'</div>');
-                echo('</div>'); // End of item details (cost and size)
+                echo('</div>');
 
                 echo('<div class="col">');
                 echo('<div class="row">Quantity: '.$row["Quantity"].'</div>');
                 $total = $row["Quantity"] * $row["Itemcost"];
                 $_SESSION["total"] = $_SESSION["total"] + $total;
                 echo('<div class="row">Total: £'.number_format((float)$total,2,".").'</div>');
-                echo('</div>'); // End of quantity and total cost
+                echo('</div>');
 
                 echo('<div class="col"></div>');
-                echo('</div>'); // End of row
-                echo('</div>'); // End of item display
+                
+                echo('</div>');
+
+                echo('</div>');
 
                 echo('<div class="col" style="flex:1;"></div>');
-                echo('</div>'); // End of basket-item div
+                echo('</div>');
             }
+
             ?>
         </div>
         
-        <!-- Total amount and a button to complete the order -->
+        <!-- Total amount and Complete button -->
         <div class="row justify-content-center">
             <div class="col-5" style="background-color: #f2f2f2; padding: 10px;">
                 <?php
-                    // Display the total cost for the basket
+                    // Display the total amount
                     echo('<p><b>Total: £'.number_format((float)$_SESSION["total"],2,".").'</b></p>');
                 ?>
-                
-                <!-- Form to submit the BasketID and complete the order -->
                 <div class="container" style="text-align: center;">
+                    <!-- Form to submit the basket ID and complete the order -->
                     <form action="completingorder.php" method="post">
                         <?php
-                        // Hidden input to send the BasketID to the next page
+                        // Include hidden field to pass the BasketID to the completing page
                         echo('<input type="hidden" name="BasketID" value ="'.$_GET['BID'].'">');
                         ?>
-                        <!-- Button to complete the order -->
+                        <!-- Submit button to confirm and complete the order -->
                         <button type="submit" class="confirm-button">Complete</button>
                     </form>
                 </div>
