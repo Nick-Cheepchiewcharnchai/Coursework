@@ -10,7 +10,6 @@ try {
     include_once("connection.php");
 
     // Prepare the SQL query to insert a new item into the 'tblitems' table
-    // The 'ItemID' is set to 'null' because it's an auto-increment field in the database
     $stmt = $conn->prepare("INSERT INTO tblitems (ItemID, Itemname, Itemdescription, Itemtype, Itemcost, Picfront, Picback)
                             VALUES (null, :itemname, :itemdescription, :itemtype, :itemcost, :picfront, :picback)");
 
@@ -26,15 +25,9 @@ try {
     // Define the target directory to store the uploaded pictures
     $target_dir = "Pictures/";
 
-    // Print the details of the uploaded files for debugging purposes
-    print_r($_FILES);
-
     // Handle the upload of the front picture
     $target_file = $target_dir . basename($_FILES["picfront"]["name"]); // Construct the file path for the front image
-    echo $target_file; // Debugging line: Print the file path
 
-    // Initialize upload flag
-    $uploadOk = 1;
     // Get the file extension of the front picture
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -47,7 +40,6 @@ try {
 
     // Handle the upload of the back picture
     $target_file = $target_dir . basename($_FILES["picback"]["name"]); // Construct the file path for the back image
-    echo $target_file; // Debugging line: Print the file path
 
     // Get the file extension of the back picture
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -66,12 +58,6 @@ try {
 
 // Close the database connection
 $conn = null;
-
-// Debugging: Print the form data to confirm that the values were correctly captured
-echo $_POST["itemname"] . "<br>";
-echo $_POST["itemdescription"] . "<br>";
-echo $_POST["itemtype"] . "<br>";
-echo $_POST["itemcost"] . "<br>";
 
 // Redirect to the 'additems.php' page after the form is submitted successfully
 header('Location:additems.php');
