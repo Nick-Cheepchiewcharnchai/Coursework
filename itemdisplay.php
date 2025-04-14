@@ -45,40 +45,29 @@
                         echo('<h2>£'.$row["Itemcost"].'</h2>');
                     echo('</div>');
 
-                    // Start of add-to-basket form
                     echo('<div>');
                     echo('<form action="addtobasket.php" method="post">');
 
-                    // Hidden input to pass the item ID to the form
                     echo('<input type="hidden" name="ItemID" value ="'.$row["ItemID"].'">');
 
-                    // --- Size Selection ---
                     echo('<div>');
                         echo('<p><b>Size</b></p>');
 
-                        // Array of available sizes
                         $sizes = ["XXL", "XL", "L", "M", "S", "XS", "XXS"];
-                        $first = true; // Used to auto-check the first size option
+                        $first = true;
 
-                        // Create radio buttons styled as Bootstrap buttons
                         foreach ($sizes as $size) {
                             $id = "size_" . $size;
-
-                            // Radio input with .btn-check (Bootstrap toggle styling)
                             echo('<input type="radio" class="btn-check" name="SelectedSize" id="'.$id.'" value="'.$size.'" autocomplete="off" '.($first ? 'checked' : '').' required>');
-
-                            // Matching label for the button (toggle effect)
                             echo('<label class="btn btn-outline-dark me-1 mb-1" style="border-radius: 0;" for="'.$id.'">'.$size.'</label>');
-
-                            $first = false; // Only the first button should be checked
+                            $first = false;
                         }
 
                     echo('</div>');
 
-                    // --- Quantity Selection ---
                     echo('<div>');
                         echo('<br><p><b>Quantity</b></p>');
-                        echo('<select name="SelectedQuantity">');
+                        echo('<select class="form-select rounded-0" name="SelectedQuantity">');
                             echo('<option value="1" checked>1</option>');
                             echo('<option value="2">2</option>');
                             echo('<option value="3">3</option>');
@@ -87,7 +76,6 @@
                         echo('</select>');
                     echo('</div>');
 
-                    // Submit button - styled to stretch across the container
                     echo('<button type="submit" class="btn btn-dark mt-3 fw-bolder w-100" style="border-radius: 0;">Add to Basket</button>');
                     echo('</form>');
 

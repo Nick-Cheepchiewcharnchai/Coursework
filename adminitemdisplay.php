@@ -13,65 +13,82 @@
     <?php include("adminnavbar.php"); ?>
     
     <?php
-        include_once("connection.php");  // Include the database connection file
 
-        // Prepare a query to select item details from the database based on the ItemID
-        $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID");
-        $itemID = $_GET['ABID'];  // Get the item ID from the URL (admin's click on item)
-        $stmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);  // Bind the itemID to the query
-        $stmt->execute();  // Execute the query
+    include_once("connection.php");
     
-        // Fetch and display the item details
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            echo('<div class="container mt-5">');
+    // Prepare a SQL statement to select item details by item ID
+    $stmt = $conn->prepare("SELECT * FROM tblitems WHERE ItemID = :itemID");
+    // Get the item ID from the URL (query parameter IID)
+    $itemID = $_GET['ABID'];
+    $stmt->bindParam(':itemID', $itemID, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Fetch and display the item data if it exists
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+        // Container for layout and spacing
+        echo('<div class="container mt-5">');
             echo('<div class="row">');
-            // Display the front and back pictures of the item
-            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
-            echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picback"].'" class="img-fluid"></div>');
-            echo('<div class="col-lg-4">');
 
-            // Display item name and cost
-            echo('<div class="text-end">');
-            echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
-            echo('<h2>£'.$row["Itemcost"].'</h2>');
-            echo('</div>');
+                // First column: front image of the item
+                echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
 
-            // Display size selection
-            echo('<div>');
-            echo('<p><b>Size</b></p>');
-            $sizes = ["XXL", "XL", "L", "M", "S", "XS", "XXS"];
-            foreach ($sizes as $size){
-                // Generate a radio button for each size
-                echo('<input type="radio" class="btn" name="SelectedSize" value="'.$size.'" required>');
-                echo('<label class="btn btn-outline-dark" for="'.$size.'">'.$size.'</label>');
-            }
-            echo('</div>');
+                // Second column: back image of the item
+                echo('<div class="col-lg-4"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picback"].'" class="img-fluid"></div>');
 
-            // Display quantity selection dropdown
-            echo('<div>');
-            echo('<br><p><b>Quantity</b></p>');
-            echo('<select name="SelectedQuantity">');
-            echo('<option value="1" checked>1</option>');
-            echo('<option value="2">2</option>');
-            echo('<option value="3">3</option>');
-            echo('<option value="4">4</option>');
-            echo('<option value="5">5</option>');
-            echo('</select>');
-            echo('</div>');
-            
-            // Display the item's description
-            echo('<div>');
-            echo('<br><p><b>Description</b></p>');
-            echo($row['Itemdescription']);  // Display item description
-            echo('</div>');
+                // Third column: details and form
+                echo('<div class="col-lg-4">');
 
-            echo('</div>');  // Close column for item details
-            echo('</div>');  // Close row
-            echo('</div>');  // Close container
-        }
+                    // Item name and price, aligned to the right
+                    echo('<div class="text-end">');
+                        echo('<h1 class="fw-bolder">'.$row["Itemname"].'</h1>');
+                        echo('<h2>£'.$row["Itemcost"].'</h2>');
+                    echo('</div>');
+
+                    echo('<div>');
+
+                        // --- Size Selection ---
+                        echo('<div>');
+                            echo('<p><b>Size</b></p>');
+
+                            // Array of available sizes
+                            $sizes = ["XXL", "XL", "L", "M", "S", "XS", "XXS"];
+                            $first = true; // Used to auto-check the first size option
+
+                            // Create radio buttons styled as Bootstrap buttons
+                            foreach ($sizes as $size) {
+                                $id = "size_" . $size;
+
+                                // Radio input with .btn-check (Bootstrap toggle styling)
+                                echo('<input type="radio" class="btn-check" name="SelectedSize" id="'.$id.'" value="'.$size.'" disabled>');
+
+                                // Matching label for the button (toggle effect)
+                                echo('<label class="btn btn-outline-dark me-1 mb-1" style="border-radius: 0;" for="'.$id.'">'.$size.'</label>');
+
+                                $first = false; // Only the first button should be checked
+                            }
+
+                        echo('</div>');
+
+                    // --- Quantity Selection ---
+                    echo('<div>');
+                        echo('<br><p><b>Quantity</b></p>');
+                        echo('<select class="form-select rounded-0" disabled>');
+                            echo('<option value="-">-</option>');
+                        echo('</select>');
+                    echo('</div>');
+
+                    // --- Item Description ---
+                    echo('<div>');
+                        echo('<br><p><b>Description</b></p>');
+                        echo($row['Itemdescription']); // Display the item description
+                    echo('</div>');
+
+                echo('</div>'); // End of third column
+            echo('</div>'); // End of row
+        echo('</div>'); // End of container
+    }
     ?>
 
 </body>
 </html>
-
-
