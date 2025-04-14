@@ -79,17 +79,6 @@
                     // Display the total amount
                     echo('<p><b>Total: £'.number_format((float)$_SESSION["total"],2,".").'</b></p>');
                 ?>
-                <div class="container" style="text-align: center;">
-                    <!-- Form to submit the basket ID and complete the order -->
-                    <form action="completingorder.php" method="post">
-                        <?php
-                        // Include hidden field to pass the BasketID to the completing page
-                        echo('<input type="hidden" name="BasketID" value ="'.$_GET['BID'].'">');
-                        ?>
-                        <!-- Submit button to confirm and complete the order -->
-                        <button type="submit" class="confirm-button">Complete</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
