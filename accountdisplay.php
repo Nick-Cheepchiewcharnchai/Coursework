@@ -12,29 +12,10 @@
     <?php include("adminloggedin.php"); ?>
     <?php include("adminnavbar.php"); ?>
 
-    <!-- Main content area to display user account details -->
     <div class="container mt-5">
         <?php 
-        // Include the connection script to interact with the database
-        include_once("connection.php");
-
-        // Sanitize any POST data (for security against XSS attacks)
-        array_map("htmlspecialchars", $_POST);
-        
-        // Prepare an SQL statement to retrieve a specific user's data using their UserID
-        $stmt = $conn->prepare("SELECT * FROM tblusers WHERE UserID = :UserID;");
-
-        // Retrieve the UserID from the query string passed via GET method
-        $userID = $_GET['ADID'];
-        $stmt->bindParam(':UserID', $userID); // Bind the UserID parameter to the query
-        $stmt->execute(); // Execute the SQL statement
-
-        // Fetch the user's data and display their first and last name
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            echo('<h1>'.$row["Firstname"].' '.$row["Lastname"].'</h1><br>');
-        }
+        echo('<h1>'.$_GET['FN'].' '.$_GET['LN'].'</h1><br>');
     
-        // Display links for more detailed information about the user's account and their orders
         echo('<h2><a style="text-decoration:none; color:#980930;" href="accountinfo.php?AIID='.$_GET['ADID'].'">Account Info</a></h2><br>');
         echo('<h2><a style="text-decoration:none; color:#980930;" href="accountorders.php?AOID='.$_GET['ADID'].'">Orders</a></h2><br>');
         ?>

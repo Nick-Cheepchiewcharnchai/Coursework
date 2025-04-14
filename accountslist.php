@@ -34,7 +34,8 @@
                 echo('<div class="row account-box">');
                 echo('<div class="container-fluid">');
                 // Link to display account details, passing the UserID as a query parameter
-                echo('<a class="nav-link" href="accountdisplay.php?ADID='.$row["UserID"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
+                echo('<a class="nav-link" href="accountdisplay.php?ADID='.$row["UserID"].'&FN='.
+                $row["Firstname"].'&LN='.$row["Lastname"].'">'.$row["Firstname"].' '.$row["Lastname"].'</a>');
                 echo('</div>');
                 echo('</div>');
             }
