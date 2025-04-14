@@ -39,9 +39,6 @@
 
         // Loop through the fetched rows and display the basket items
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Store the BasketID in session, although this might be redundant (questioned later)
-            $_SESSION["basket"] = $row["BasketID"];
-
             // Start displaying each basket item
             echo('<div class="row basket-item">');
 
@@ -87,6 +84,16 @@
             echo('</div>');
         }
         ?>
+        </div>
+
+        <!-- Section to display the total price and confirm the purchase -->
+        <div class="row justify-content-center">
+            <div class="col-5" style="background-color: #f2f2f2; padding: 10px;">
+                <!-- Display the total price of the items in the basket -->
+                <?php
+                    echo('<p><b>Total: £'.$_SESSION["total"].'</b></p>');
+                ?>
+            </div>
         </div>
     </div>
 
