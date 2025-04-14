@@ -86,7 +86,7 @@
         ?>
         </div>
 
-        <!-- Section to display the total price and confirm the purchase -->
+        <!-- Section to display the total price -->
         <div class="row justify-content-center">
             <div class="col-5" style="background-color: #f2f2f2; padding: 10px;">
                 <!-- Display the total price of the items in the basket -->
