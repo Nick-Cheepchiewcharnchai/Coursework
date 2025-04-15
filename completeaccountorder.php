@@ -38,13 +38,9 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 // Each item displayed within a row container
                 echo('<div class="row basket-item">');
-
-                // Display the item's image (with a flexible width)
                 echo('<div class="col" style="flex:1;"><img src="/Coursework/Coursework-1/Pictures/'.$row["Picfront"].'" class="img-fluid"></div>');
 
                 echo('<div class="col" style="flex:6;">');
-
-                // Display the item name with bold and underlined style
                 echo('<div class="row" style="font-weight:bold; text-decoration:underline;">'.$row["Itemname"].'</div>');
 
                 echo('<div class="row">');
@@ -64,17 +60,12 @@
                 echo('</div>');
 
                 echo('<div class="col"></div>');
-                
+                echo('</div>');
                 echo('</div>');
 
-                echo('</div>');
-
-                // Empty column to maintain layout structure
                 echo('<div class="col" style="flex:1;"></div>');
-
                 echo('</div>');
             }
-
             ?>
         </div>
         
