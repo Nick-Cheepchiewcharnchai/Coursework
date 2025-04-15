@@ -20,9 +20,6 @@
 
         <!-- Link to add a new item -->
         <h2><a style="text-decoration:none; color:#980930;" href="additems.php">Add item</a></h2><br>
-
-        <!-- Link to remove an existing item -->
-        <h2><a style="text-decoration:none; color:#980930;" href="removeitems.php">Remove item</a></h2><br>
     </div>
 
 </body>
