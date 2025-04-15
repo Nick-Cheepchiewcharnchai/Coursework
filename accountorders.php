@@ -32,53 +32,47 @@
             echo('<h1>' . $row["Firstname"] . ' ' . $row["Lastname"] . '</h1><br>');
         }
 
-        // Display "Unprocessed" section
         echo("<h2>Unprocessed</h2>");
 
-        // Prepare and execute a query to retrieve unprocessed orders for the user
         $stmt2 = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Unprocessed" AND tblorders.UserID = :UserID');
         $stmt2->bindParam(':UserID', $userID);
         $stmt2->execute();
 
-        // Display each unprocessed order in a link that redirects to process it
         while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)){
             echo('<div class="row" id="baskets">');
             echo('<div class="row basket-item">');
-            echo('<a style="text-decoration:none; color:inherit;" href="processaccountorder.php?BID=' . $row["BasketID"] . '&FN=' . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket: ' . $row["Firstname"] . ' ' . $row["Lastname"] . '</a>');
+            echo('<a style="text-decoration:none; color:inherit;" href="processaccountorder.php?BID=' . $row["BasketID"] . '&FN=' 
+            . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket ' . $row["BasketID"] . '</a>');
             echo('</div>');
             echo('</div>');
         }
 
-        // Display "Processed" section
         echo("<h2>Processed</h2>");
 
-        // Prepare and execute a query to retrieve processed orders for the user
         $stmt3 = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Processed" AND tblorders.UserID = :UserID');
         $stmt3->bindParam(':UserID', $userID);
         $stmt3->execute();
 
-        // Display each processed order in a link that redirects to complete it
         while ($row = $stmt3->fetch(PDO::FETCH_ASSOC)){
             echo('<div class="row" id="baskets">');
             echo('<div class="row basket-item">');
-            echo('<a style="text-decoration:none; color:inherit;" href="completeaccountorder.php?BID=' . $row["BasketID"] . '&FN=' . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket: ' . $row["Firstname"] . ' ' . $row["Lastname"] . '</a>');
+            echo('<a style="text-decoration:none; color:inherit;" href="completeaccountorder.php?BID=' . $row["BasketID"] . '&FN=' 
+        . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket ' . $row["BasketID"] . '</a>');
             echo('</div>');
             echo('</div>');
         }
 
-        // Display "Completed" section
         echo("<h2>Completed</h2>");
 
-        // Prepare and execute a query to retrieve completed orders for the user
         $stmt4 = $conn->prepare('SELECT * FROM tblorders INNER JOIN tblusers ON tblorders.UserID = tblusers.UserID WHERE Status = "Completed" AND tblorders.UserID = :UserID');
         $stmt4->bindParam(':UserID', $userID);
         $stmt4->execute();
 
-        // Display each completed order in a link that redirects to the order details page
         while ($row = $stmt4->fetch(PDO::FETCH_ASSOC)){
             echo('<div class="row" id="baskets">');
             echo('<div class="row basket-item">');
-            echo('<a style="text-decoration:none; color:inherit;" href="completedetail.php?BID=' . $row["BasketID"] . '&FN=' . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket: ' . $row["Firstname"] . ' ' . $row["Lastname"] . '</a>');
+            echo('<a style="text-decoration:none; color:inherit;" href="completedetail.php?BID=' . $row["BasketID"] . '&FN=' 
+        . $row["Firstname"] . '&LN=' . $row["Lastname"] . '">Basket ' . $row["BasketID"] . '</a>');
             echo('</div>');
             echo('</div>');
         }
